@@ -1,0 +1,67 @@
+Functions and statements 
+
+Functions are named subprograms, logical units. By splitting the code into functions we organize it better so it is easier to extend and modify it. Functions are values.
+
+Functions can be assigned to variable - function expression. When the functions is called before assignment it is HOISTING (lifting up in the code). It can be done when the function isn't assigned to variable - function definition is hoisting. Function expression isn't hoisting. (Var is hoisting, let and const aren't hoisting. Hoisting is used when we do not want to depend on the order of declaring. Var is hoisting the definition of the variable.)
+
+The interpreter is compiling the js code. The first time it passes through the code it checks which objects are hoisting, and the next time it compiles them it already has the hoisted elements declared
+
+The functions without passed parameters are doing something constantly. The functions access everything from the outside. In Python it sees only what is passed to them.
+
+If we pass as parameter logically connected values we can pass object, make a list of them or pack them with the rest operator (...)
+
+If a function doesn't have return statement it returns 'undefined'
+We can execute any logic after the return statement
+
+The element to be returned should e on the same line or start on the same line
+Functions return only one value
+It is a good practice the function to return the same type of data it receives
+
+Pure functions are important in functional programming. They receive params and return result and work only with its own parameters, not using outer data.
+
+Functions should have a verb in their name to show what the function does. Noun + adjective + noun
+
+What is closure: when a nested function remembers its scope
+
+The names of the variables must be unique only in their scope
+
+The arrow functions are a shorter way to define functions. They have a feature which is helpful if we need that function only to return something- we can remove the return and the {} like so:
+
+const multiply = (num1, num2) => {return num1 * num2;}
+const multiply = (num1, num2) => num1 * num2;
+
+---
+const calculator = {
+multiply: (x, y) => x * y,
+divide: (x, y) => x / y,
+sum: (x, y) => x + y,
+subtract: (x, y) => x - y,
+};
+
+const calculate(num1, num2, operator) => calculator[operator](num1, num2);
+
+const result = calculate(5, 5, "multiply");
+
+console.log(result);
+
+--------
+
+function greet(getMessage, name) {
+    return getMessage() + ' ' + name;
+
+function sayGoodMorning() {
+   return "Good morning";
+}
+
+console.log(sayGoodMorning);
+
+const greeting = greet(sayGoodMorning, "alex");
+
+----------
+
+function greet(getMessage, name) {
+	return getMessage() + " " + name;
+
+const greeting = greet(() => "Good morning", "Alex");
+
+console.log(greeting);
