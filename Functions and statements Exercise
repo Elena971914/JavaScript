@@ -1,0 +1,231 @@
+Functions and statements - EXERCISE
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+01. Smallest of Three Numbers
+
+function getSmallestNumber(num1, num2, num3) {
+    let smallest = num1;
+    for (let el of [num1, num2, num3]) {
+        if (el < smallest) {
+            smallest = el;
+        }
+    }
+    console.log(smallest)
+}
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+02. Add and Subtract
+
+function addAndSubtract(num1, num2, num3) {
+    let sum = (x, y) => x + y;
+    let subtract = (x, y) => x - y;
+    let result = subtract(sum(num1, num2), num3);
+    console.log(result)
+}
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+03. Characters in Range
+
+function getCharsBetween(char1, char2) {
+    let first = (char1.charCodeAt() < char2.charCodeAt()) ? char1 : char2;
+    let second = (first === char1) ? char2 : char1;
+    let charsBetween = ''
+    for (x = first.charCodeAt() + 1; x < second.charCodeAt(); x++) {
+        charsBetween += String.fromCharCode(x) + " "
+    }
+    console.log(charsBetween)
+}
+
+getCharsBetween("d", "a")
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+04. Odd And Even Sum
+
+function sumOddEven(number) {
+    let odd = 0;
+    let even = 0;
+    for (let digit of number.toString()) {
+        if (digit % 2 === 0) {
+            even += Number(digit);
+        }
+        else {
+            odd += Number(digit);
+        }
+    }
+    console.log(`Odd sum = ${odd}, Even sum = ${even}`)
+}
+
+sumOddEven(3495892137259234)
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+05. Palindrome Integers
+
+function checkIfPalindrome(numberList) {
+    for (let number of numberList) {
+        let arrNumber = number.toString().split('');
+        let palindrome = true;
+        if (arrNumber.length > 1) {
+            if (arrNumber.pop() !== arrNumber.shift()) {
+                palindrome = false;
+            }
+        }
+        console.log(palindrome)
+    }
+}
+
+checkIfPalindrome([123,323,421,121])
+checkIfPalindrome([32,2,232,1010])
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+06. Password Validator
+
+---var1 - NOT READY - 85/100
+
+function validatePassword(password) {
+    let errors = []
+    function checkLength() {
+        if (password.length < 6 || password.length > 10) {
+            errors.push("Password must be between 6 and 10 characters")
+        }
+    }
+    function checkConsistency() {
+        if (!password.match("^[A-Za-z0-9]+$")) {
+            errors.push("Password must consist only of letters and digits")
+        }
+    }
+    function checkDigitsCount() {
+        let counter = password.match(/\d/g)
+
+        if (counter.length < 2) {
+            errors.push("Password must have at least 2 digits")
+        }
+    }
+    checkLength()
+    checkConsistency()
+    checkDigitsCount()
+
+    if (errors.length>0) {
+        for (let error of errors) {
+            console.log(error)
+        }
+    }
+    else {console.log('Password is valid') }
+}
+
+
+validatePassword('*MyPass1')
+
+---VAR2 
+
+function validatePassword(password) {
+    function isWrongLength() {
+        return password.length < 6 || password.length > 10;
+    }
+
+    function isAlphaNumeric() {
+        return password.match("^[A-Za-z0-9]+$")
+    }
+
+    function hasAtLeastTwoDigits(password) {
+        const digitCount = password.match(/\d/g);
+        return digitCount ? digitCount.length >= 2 : false;
+    }
+
+    const errors = []
+
+    if (isWrongLength(password)) {
+        errors.push("Password must be between 6 and 10 characters")
+    }
+
+    if (!isAlphaNumeric(password)) {
+        errors.push("Password must consist only of letters and digits")
+    }
+
+    if (!hasAtLeastTwoDigits(password)) {
+        errors.push("Password must have at least 2 digits")
+    }
+
+    if (errors.length > 0) {
+        console.log(errors.join('\n'))
+        return;
+    }
+
+    console.log('Password is valid')
+} 
+
+validatePassword('*MyPass1')
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+07. NxN Matrix
+
+function printMatrix(num) {
+    for (y = 1; y <= num; y++) {
+        console.log((String(num) + " ").repeat(num))
+    }
+}
+
+printMatrix(3)
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+08. Perfect Number
+
+function checkIfPerfect(num) {
+    let divisorsSum = 0
+    for (x = 1; x < num; x ++) {
+        if (num % x === 0) {
+            divisorsSum += x
+        }
+    }
+    if (divisorsSum === num) {
+        console.log("We have a perfect number!")
+    }
+    else {console.log("It's not so perfect.")}
+}
+
+checkIfPerfect(28)
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+09. Loading Bar
+
+function visualizeLoadingBar(percentage) {
+    if (percentage === 100) {
+        console.log(`${num}% Complete!`)
+        return
+    }
+    let loadingBar = ""
+    for (x = 1; x <= percentage / 10; x++) {
+        loadingBar += '%'
+    }
+    console.log(`${percentage}% [${loadingBar.padEnd(10, ".")}]`)
+    console.log('Still loading...')
+}
+
+visualizeLoadingBar(60)
+
+🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗🦗
+
+10. Factorial Division
+
+function calculateFactorialDivision(facNum, facNum2){
+    function getFactorial(num) {
+        let result = 1;
+        for (x = 1; x <= num; x++) {
+            result *= x;
+        }
+        return result;
+    }
+
+    let result1 = getFactorial(facNum)
+    let result2 = getFactorial(facNum2)
+    console.log((result1 / result2).toFixed(2))
+}
+
+calculateFactorialDivision(5, 2)
