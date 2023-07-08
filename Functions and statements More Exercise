@@ -144,6 +144,9 @@ function monitorThickness(list) {
                 diamond = operations[operation](diamond);
                 counter ++;
             }
+            if (counter === 0) {
+                continue;
+            }
             console.log(`${operation} x${counter}`)
             diamond = operations["Transporting and washing"](diamond)
             console.log('Transporting and washing')
