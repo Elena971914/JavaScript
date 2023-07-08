@@ -1,0 +1,220 @@
+JS SYNTAX FUNDAMENTALS - MORE EXERCISES
+
+01. Validity Checker
+
+function solve(x1, y1, x2, y2) {
+    function calculateDistance(x1, y1, x2, y2) {
+        return Math.sqrt((x2-x1) ** 2 + (y2-y1) ** 2);
+    }
+    
+    function isDistanceValid(x1, y1, x2, y2) {
+        const distance = calculateDistance(x1, y1, x2, y2);
+        const isValid = Number.isInteger(distance)
+        const status = isValid ? 'valid' : 'invalid';
+    
+        console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is ${status}`)
+    }
+    isDistanceValid(x1, y1, 0, 0);
+    isDistanceValid(x2, y2, 0, 0);
+    isDistanceValid(x1, y1, x2, y2);
+}
+
+solve(2,1,1,1)
+
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+02. Words Uppercase
+
+function solve(text) {
+    const result = text
+        .toUpperCase()
+        .split(/[\W]+/)
+        .filter((w) => w.length >= 1)
+        .join(', ');
+    console.log(result);
+}
+
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+03. Calculator
+
+function solve(num1, operator, num2) {
+    if (operator === "+") {
+        console.log(`${(num1+num2).toFixed(2)}`)
+    } else if (operator === "-") {
+        console.log(`${(num1-num2).toFixed(2)}`)
+    } else if (operator === "/") {
+        console.log(`${(num1/num2).toFixed(2)}`)
+    } else if (operator === "*") {
+        console.log(`${(num1*num2).toFixed(2)}`)
+    }
+}
+
+solve(5,
+    '+',
+    10)
+
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+04. Gladiator Expenses
+
+function solve(lostFightsCount, helmetPrice, swordPrice, shieldPrice, armorPrice) {
+    var expenses = 0;
+
+    for (let x = 1; x <= lostFightsCount; x++) {
+
+        if (x % 12 === 0) {
+            expenses += armorPrice;
+        }
+        if (x % 6 === 0) {
+            expenses += shieldPrice;
+        }
+        if (x % 3 === 0) {
+            expenses += swordPrice;
+        }
+        if (x % 2 === 0) {
+            expenses += helmetPrice;
+        }
+    }
+    console.log(`Gladiator expenses: ${expenses.toFixed(2)} aureus`)
+}
+
+solve(23,
+    12.50,
+    21.50,
+    40,
+    200)
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+05. Spice Must Flow
+
+function mine(yield) {
+    let days = 0;
+    let spices = 0;
+    while (yield >= 100) {
+        days += 1;
+        spices += yield; 
+        spices -= 26;
+        yield -= 10;
+    }
+    spices -= 26;
+    if (spices < 0) {
+        spices = 0;
+    }
+    console.log(days)
+    console.log(spices)
+}
+ 
+mine(111)
+
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+06. Login
+
+function login(list) {
+    let username = list.shift();
+    let password = "";
+    let counter = 0;
+    for (let x = username.length - 1; x >= 0; x--) {
+        password += username[x]
+    }
+    for (let passTry of list) {
+        if (passTry === password) {
+            console.log(`User ${username} logged in.`);
+            return; 
+        }
+        counter += 1;
+        if (counter === 4) {
+                console.log(`User ${username} blocked!`);
+                return;
+        }
+         else { 
+            console.log("Incorrect password. Try again."); 
+        }
+    }
+}
+
+login(['Acer', 'login', 'go', 'let me in', 'recA'])
+login(['sunny','rainy','cloudy','sunny','not sunny'])
+
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+07. Bitcoin "Mining"
+
+function mine(goldList) {
+    let day = 1;
+    let dayOfFirstBitcoin = 0;
+    let bitcoins = 0;
+    let allMoney = 0;
+    let priceGold = 67.51;
+    let priceBitcoin = 11949.16;
+    for (let gold of goldList) {
+        if (day % 3 === 0) {
+            allMoney += 0.7 * gold * priceGold;
+        }
+        else {
+            allMoney += gold * priceGold;
+        }
+
+        if (allMoney >= priceBitcoin) {
+            if (dayOfFirstBitcoin === 0) {
+                dayOfFirstBitcoin = day;
+            }
+            let bitcoinsToAdd = Math.floor(allMoney / priceBitcoin)
+            bitcoins += bitcoinsToAdd
+            allMoney -= bitcoinsToAdd * priceBitcoin
+        }
+        day += 1;
+    }
+    console.log(`Bought bitcoins: ${bitcoins}`)
+    if (bitcoins >= 1) {
+        console.log(`Day of the first purchased bitcoin: ${dayOfFirstBitcoin}`)
+    }
+    console.log(`Left money: ${allMoney.toFixed(2)} lv.`)
+}
+
+mine([100, 200, 300])
+
+⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️
+
+08. The Pyramid Of King Djoser
+
+function pyramid(base, increment) {
+    let stone = 0;
+    let marble = 0;
+    let lapiz = 0;
+    let gold = 0;
+
+    let step = 1;
+    let finished = false;
+
+    while (!finished) {
+        let stoneForStep = ((base - 2) **  2) * increment
+        let coverForStep = base ** 2 * increment - stoneForStep
+
+        if (base <= 2) {
+            gold += base ** 2 * increment;
+            finished = true;
+        }
+        else {
+        stone += stoneForStep;
+
+        if (step % 5 === 0) {
+            lapiz += coverForStep;
+        }
+        else {
+            marble += coverForStep;
+        }
+
+        base -= 2;
+        step += 1;
+    }
+    }
+    console.log(`Stone required: ${Math.ceil(stone)}`)
+    console.log(`Marble required: ${Math.ceil(marble)}`)
+    console.log(`Lapis Lazuli required: ${Math.ceil(lapiz)}`)
+    console.log(`Gold required: ${Math.ceil(gold)}`)
+    console.log(`Final pyramid height: ${Math.floor(step*increment)}`)
+}
+
+pyramid(23, 0.5)
