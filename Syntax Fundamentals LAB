@@ -1,0 +1,349 @@
+JAVASCRIPT FUNDAMENTALS SYNTAX
+
+01. Multiply Number by 2
+
+function solve(num) {
+    console.log(num*2);
+}
+
+solve(4)
+
+------------------------
+02. Student Information
+
+function solve(studentName, age, averageGrade) {
+   console.log(`Name: ${studentName}, Age: ${age}, Grade: ${averageGrade.toFixed(2)}`
+)
+}
+
+solve('John', 15, 5.54678 )
+solve('Steve', 16, 2.1426  )
+solve('Marry', 12, 6.00 )
+
+----------------------
+03. Excellent grade
+
+function solve(grade) {
+   if (grade>=5.50) {
+    console.log('Excellent');
+   }
+   else {
+    console.log('Not excellent');
+   }
+}
+
+solve(5.40)
+solve(5.50)
+-----------------------
+04. Month Printer
+function solve(month) {
+   if (month === 1) {
+    console.log('January');
+   }
+   else if (month === 2) {
+    console.log('February');
+   }
+   else if (month === 3) {
+    console.log('March');
+   }
+   else if (month === 4) {
+    console.log('April');
+   }
+   else if (month === 5) {
+    console.log('May');
+   }
+   else if (month === 6) {
+    console.log('June');
+   }
+   else if (month === 7) {
+    console.log('July');
+   }
+   else if (month === 8) {
+    console.log('August');
+   }
+   else if (month === 9) {
+    console.log('September');
+   }
+   else if (month === 10) {
+    console.log('October');
+   }
+   else if (month === 11) {
+    console.log('November');
+   }
+   else if (month === 12) {
+    console.log('December');
+   }
+   else {
+    console.log('Error!');
+   }
+}
+
+solve(1)
+solve(22)
+
+------------------
+05. Math Operations
+
+function solve(num1, num2, operator) {
+    if (operator === "+") {
+        console.log(num1+num2)
+    }
+    else if (operator === "-") {
+        console.log(num1-num2)
+    }
+    else if (operator === "*") {
+        console.log(num1*num2)
+    }
+    else if (operator === "/") {
+        console.log(num1/num2)
+    }
+    else if (operator === "%") {
+        console.log(num1%num2)
+    }
+    else if (operator === "**") {
+        console.log(num1**num2)
+    }
+}
+
+
+solve(5, 6, '+')
+solve(3, 5.5, '*')
+
+--------------------
+06. Largest Number
+
+function solve(num1, num2, num3) {
+    let list = [num1,num2,num3];
+    list.sort(function(a, b) {
+        return a - b;
+      });
+    list.reverse()
+    let largest=list[0]
+    console.log(`The largest number is ${largest}.`)
+}
+
+solve(5, -3, 17)
+solve(3, 5.5, 2)
+
+--------------------
+07. Theatre Promotions
+
+function solve(dayType, age) {
+    if (dayType === 'Weekday') {
+        if (age >= 0 && age <= 18){
+            console.log('12$');
+        }
+        else if (age > 18 && age <= 64){
+            console.log('18$');
+        }
+        else if (age > 64 && age <= 122){
+            console.log('12$');
+        }
+        else {
+            console.log('Error!')
+        }
+    }
+    else if (dayType === 'Weekend') {
+        if (age >= 0 && age <= 18){
+            console.log('15$');
+        }
+        else if (age > 18 && age <= 64){
+            console.log('20$');
+        }
+        else if (age > 64 && age <= 122){
+            console.log('15$');
+        }
+        else {
+            console.log('Error!')
+        }
+    }
+    else if (dayType === 'Holiday') {
+        if (age >= 0 && age <= 18){
+            console.log('5$');
+        }
+        else if (age > 18 && age <= 64){
+            console.log('12$');
+        }
+        else if (age > 64 && age <= 122){
+            console.log('10$');
+        }
+        else {
+            console.log('Error!')
+        }
+    }
+    else {
+        console.log('Error!')
+    }
+}
+
+solve("Weekday", 15)
+solve("Weekday", 30)
+solve("Weekday", 65)
+
+-------------------------
+08. Circle Area
+
+
+function solve(arg) {
+    
+    if (typeof(arg) === 'number') {
+        console.log((Math.PI * arg*arg).toFixed(2));
+    }
+    else {
+        console.log(`We can not calculate the circle area, because we receive a ${typeof(arg)}.`
+        );
+    }
+}
+
+solve(5)
+solve('name')
+
+------------------------------
+09. Numbers from 1 to 5
+
+function solve() {
+    i = 1;
+    while (i<=5) {
+        console.log(i);
+        i++
+    }
+}
+
+solve()
+
+------VAR 2
+
+function solve () {
+    for (let x=1; x<=5; x++) {
+        console.log(x)
+    }
+}
+-------------------------------
+10. Numbers from M to N
+function solve(m, n) {
+    for (let i=m; i>=n; i--) {
+        console.log(i)
+    };
+}
+
+solve(6,2)
+-------------------------------
+11. Sum First and Last Array Elements
+
+function solve(list) {
+    let sum = list[0] + list[list.length-1]
+    console.log(sum)
+}
+
+solve([20,30,40])
+---------------------------------
+12. Reverse an Array of Numbers
+
+function solve(n, list) {
+    let newList=list.slice(0, n)
+        console.log(...newList.reverse())
+}
+
+solve(4, [-1, 20, 99, 5] )
+
+---VAR 2
+
+function solve(n, list) {
+    let newList= []
+    for (let i=0; i<n; i++){
+        newList.unshift(list[i])
+    }
+    console.log(...newList)
+}
+
+solve(4, [-1, 20, 99, 5] )
+
+---VAR3
+
+function solve(n, list) {
+    let output= ''
+    for (let i=list.length-1; i>=0; i--) {
+        if (i<n) {
+        output += list[i] + " "
+        i}
+    }
+    console.log(output)
+}
+
+solve(2, [-1, 20, 99, 5] )
+--------------------------------
+
+13. Even and Odd Subtraction
+
+function solve(list) {
+    let odd = 0;
+    let even = 0;
+    for (let el of list) {
+        if (el%2===0) {
+            even += el
+        }
+        else {
+            odd += el
+        }
+    }
+    result = even-odd
+    console.log(result)
+}
+
+--- VAR 2
+
+function solve(list) {
+    let odd = [];
+    let even = [];
+    for (let el of list) {
+        if (el%2===0) {
+            even.push(el)
+        }
+        else {
+            odd.push(el)
+        }
+    }
+    evenSum = even.reduce(function(a, b) { return a + b; }, 0);
+    oddSum = odd.reduce(function(a, b) { return a + b; }, 0);
+    console.log(evenSum-oddSum)
+}
+--------------------------------
+14. Substring
+
+function solve(string,startIndex,count) {
+    console.log(string.substring(startIndex, startIndex + count))
+}
+
+solve('SkipWord', 4, 8)
+
+-----VAR 2 - doesn't pass in judge
+
+function solve(string,startIndex,count) {
+    console.log(string.slice(startIndex, count+1))
+}
+
+---------------------------------
+15. Censored Words
+
+function solve(text, word) {
+    while (text.includes(word)) {
+        text= text.replace(word, "*".repeat(word.length))
+    }
+    console.log(text)
+}
+---------------------------------
+16. Count String Occurrences
+
+function solve(text, word) {
+    let words = text.split(' ');
+    let counter = 0;
+    for (let el of words) {
+        if (el === word) {
+            counter++;
+        }
+    }
+    console.log(counter)
+}
+
+solve('This is a word and it also is a sentence',
+'is')
