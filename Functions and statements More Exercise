@@ -1,0 +1,199 @@
+FUNCTIONS AND STATEMENTS - MORE EXERCISES
+
+01. Car Wash
+
+function washCar(commands) {
+    let value = 0;
+    for (let command of commands) {
+       switch (command) {
+        case "soap":
+            value += 10;
+            break;
+        case "water":
+            value = 1.2 * value;
+            break;
+        case "vacuum cleaner":
+            value = 1.25 * value;
+            break;
+        case "mud":
+            value = 0.9 * value;
+            break;
+       }
+    }
+    console.log(`The car is ${value.toFixed(2)}% clean.`)
+}
+
+washCar(["soap", "water", "mud", "mud", "water", "mud", "vacuum cleaner"])
+
+🧩🧩 VAR2 🧩🧩
+
+function solve(commands) {
+
+    const carWash = {
+//(cleanPercentage) is a function we receive
+        soap: (cleanPercentage) => cleanPercentage + 10,
+        water: (cleanPercentage) => cleanPercentage * 1.2,
+        "vacuum cleaner": (cleanPercentage) => cleanPercentage * 1.25,
+        mud: (cleanPercentage) => cleanPercentage * 0.9
+    };
+
+//reduce receives function which receives accumulator(total) and current(element of list), and a starting value (0 in this case) 
+    let cleanPercentage = commands.reduce(function
+        (total, current) => carWash[current](total), 0
+    );
+    console.log(`The car is ${cleanPercentage.toFixed(2)}% clean.`)
+}
+
+solve(["soap", "water", "mud", "mud", "water", "mud", "vacuum cleaner"])
+
+🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩
+
+02. Number Modification
+
+function modifyNumber(num) {
+    let numStr = num.toString()
+    function getSum(numStr) {
+        let sumDigits = 0;
+        for (let el of numStr) {
+            sumDigits += Number(el);
+        }
+        return sumDigits
+    }
+
+    while (true) {
+        let sumDigits = getSum(numStr);
+        if (sumDigits / numStr.length > 5) {
+            console.log(numStr);
+            break;
+        } else {
+            numStr += '9'
+        }
+    }
+}
+
+modifyNumber(101)
+
+🧩🧩 VAR2 🧩🧩
+
+function modifyNumber(num) {
+    num = num.toString();
+
+    function calculateAverage(num) {
+        return num
+        .split('')
+        .map(Number)
+        .reduce((total, current) => total + current, 0) / num.length;
+    }
+
+    let average = calculateAverage(num)
+
+    while (average < 5) {
+        num += '9';
+        average = calculateAverage(num)
+    }
+    
+    console.log(num)
+}
+
+modifyNumber(101)
+
+🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩
+
+03. Points Validation
+
+function solve(list) {
+    function calculateDistance(x1, y1, x2, y2) {
+        return Math.sqrt((x2-x1) ** 2 + (y2-y1) ** 2);
+    }
+    
+    function isDistanceValid(x1, y1, x2, y2) {
+        const distance = calculateDistance(x1, y1, x2, y2);
+        const isValid = Number.isInteger(distance)
+        const status = isValid ? 'valid' : 'invalid';
+    
+        console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is ${status}`)
+    }
+    const [x1, y1, x2, y2] = list
+    isDistanceValid(x1, y1, 0, 0);
+    isDistanceValid(x2, y2, 0, 0);
+    isDistanceValid(x1, y1, x2, y2);
+}
+
+
+🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩
+
+04. Radio Crystals - 28/100 - NOT READY
+
+function monitorThickness(list) {
+    operations = {
+        Cut: (chunk) => chunk / 4,
+        Lap: (chunk) => chunk * 0.8,
+        Grind: (chunk) => chunk - 20,
+        Etch: (chunk) => chunk - 2,
+        "X-ray": (chunk) => chunk + 1,
+        "Transporting and washing": (chunk) => Math.floor(chunk)
+    }
+ 
+    let target = list.shift();
+ 
+    for (let diamond of list) {
+        console.log(`Processing chunk ${diamond} microns`)
+        for (let operation in operations) {
+            var counter = 0;
+            while (operations[operation](diamond) >= target-1) {
+                diamond = operations[operation](diamond);
+                counter ++;
+            }
+            console.log(`${operation} x${counter}`)
+            diamond = operations["Transporting and washing"](diamond)
+            console.log('Transporting and washing')
+            if (diamond === target - 1) {
+                console.log('X-ray x1');
+                diamond ++;
+            }
+            if (diamond === target) {
+                console.log(`Finished crystal ${target} microns`)
+                break;
+            }
+        }
+    }
+}
+
+🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩
+
+05. Print DNA
+
+function printDNA(rows) {
+    const pattern = [
+        ['A', 'T'],
+        ['C', 'G'],
+        ['T', 'T'],
+        ['A', 'G'],
+        ['G', 'G'],
+    ];
+
+    for (let index = 0; index < rows; index ++) {
+        //All indexes are valid
+        const [x, y] = pattern[index % pattern.length];
+
+        //Every forth line
+        if (index % 4 === 0) {
+            console.log(`**${x}${y}**`);
+            continue;
+        }
+
+        //The odd lines
+        if (index % 2 === 1) {
+            console.log(`*${x}--${y}*`);
+            continue;
+        }
+
+        //The rest of the even lines that are not 4th lines
+        if (index % 2 === 0) {
+            console.log(`${x}----${y}`);
+            continue;
+        }
+    }
+}
+
+printDNA(10)
