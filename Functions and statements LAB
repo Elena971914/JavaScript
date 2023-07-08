@@ -1,0 +1,89 @@
+Functions and statements - LAB
+
+01. Format Grade
+
+function formatGrade(grade) {
+    if (grade < 3) {
+        console.log(`Fail (2)`);
+    } else if (grade >= 3 && grade < 3.50) {
+        console.log(`Poor (${grade.toFixed(2)})`);
+    } else if (grade >= 3.50 && grade < 4.50) {
+        console.log(`Good (${grade.toFixed(2)})`);
+    } else if (grade >= 4.50 && grade < 5.50) {
+        console.log(`Very good (${grade.toFixed(2)})`);
+    } else if (grade >= 5.50) {
+        console.log(`Excellent (${grade.toFixed(2)})`);
+    }
+}
+
+🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬
+
+02. Math Power
+
+function raiseNumberByPower(number, power) {
+    console.log(number ** power)
+}
+
+raiseNumberByPower(2, 8)
+
+🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬
+
+03. Repeat String
+
+function repeatString(string, timesToRepeat) {
+    console.log(string.repeat(timesToRepeat))
+}
+
+repeatString('abc', 3)
+
+************NOT FOR JUDGE, USING ARROW FUNC
+
+let repeatString = (string, timesToRepeat) => string.repeat(timesToRepeat)
+
+console.log(repeatString("abc", 3))
+
+🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬
+
+04. Orders
+
+function calculateOrderPrice(product, quantity) {
+    let products = {
+        'coffee': 1.50,
+        'water': 1.00,
+        'coke': 1.40,
+        'snacks': 2.00
+    }
+    console.log((products[product] * quantity).toFixed(2))
+}
+
+calculateOrderPrice('water', 5)
+
+🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬
+
+05. Simple Calculator
+
+function calculate(num1, num2, operator) {
+    const calculator = {
+        multiply: (x, y) => x * y,
+        divide: (x, y) => x / y,
+        add: (x, y) => x + y,
+        subtract: (x, y) => x - y,
+    };
+    return calculator[operator](num1, num2);
+}
+
+🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬🐬
+
+06. Sign Check
+
+function checkSign(num1, num2, num3) {
+    let minuses = 0;
+    for (let num of [num1,num2,num3]) {
+        if (num < 0) {
+            minuses += 1
+        }
+    }
+    if (minuses === 1 || minuses === 3) {
+        console.log('Negative')
+    } else {console.log('Positive')}
+}
