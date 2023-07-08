@@ -1,0 +1,77 @@
+and operator in JS is &&
+or operator is ||
+
+The conditional (ternary) operator is the only JavaScript operator that takes three operands: a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy. This operator is frequently used as an alternative to an if...else statement.
+
+const age = 26;
+const beverage = age >= 21 ? "Beer" : "Juice";
+console.log(beverage); // "Beer"
+
+---
+
+The switch statement evaluates an expression, matching the expression's value against a series of case clauses, and executes statements after the first case clause with a matching value, until a break statement is encountered. The default clause of a switch statement will be jumped to if no case matches the expression's value.
+
+const expr = 'Papayas';
+switch (expr) {
+  case 'Oranges':
+    console.log('Oranges are $0.59 a pound.');
+    break;
+  case 'Mangoes':
+  case 'Papayas':
+    console.log('Mangoes and papayas are $2.79 a pound.');
+    // Expected output: "Mangoes and papayas are $2.79 a pound."
+    break;
+  default:
+    console.log(`Sorry, we are out of ${expr}.`);
+}
+
+--------
+for (let i=1; i<=5;i++) {
+    console.log(i)
+}
+
+let i=1 -declaration
+i<=5 condition, if broken - stop the cycle
+i++ change
+--------
+Number.MIN_SAFE_INTEGER - min number
+Number.MAX_SAFE_INTEGER - max number
+--------
+let numbers = [1,2,3...[4,5,6]]
+console.log(numbers)
+[1,2,3,4,5,6] - list flattening 
+...-rest operator
+--------
+for (const num of numbers) {
+console.log(num);
+}
+
+for (let index=0;index<numbers.length; index++) {
+    console.log(numbers[index]);
+}
+
+-both examples do the same - give us the numbers of a list one by one. 
+In the first case we cannot change the elements 
+--------
+numbers
+   .forEach((num => {console.log(num);
+})
+
+let transformed = numbers
+   .map((num) => num * 2);
+
+let even=numbers
+   .filter((num) => num % 2 === 0);
+
+The first is read-only, while the second transforms every element. Mutator methods are splice, sort;
+Accessor methods return copies: slice, includes, indexOf;
+Iterator methods: forEach, map, filter (callback functions- functions that use functions)
+----
+Method is a function attached to a class, otherwise it is just a function
+
+----
+let nums = [1, 3, 4, 5, 6];
+nums.splice(1, 0, 2);
+1-index
+0-how much elements are removed starting from the index
+2-the element that is added at the index
