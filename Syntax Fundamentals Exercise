@@ -1,0 +1,539 @@
+JS SYNTAX FUDAMENTALS - EXERCISE
+
+01. Ages
+
+function solve(age) {
+    if (age >= 0 && age <=2) {
+        console.log('baby');
+    }
+    else if (age >= 3 && age <=13) {
+        console.log('child');
+    }
+    else if (age >= 14 && age <=19) {
+        console.log('teenager');
+    }
+    else if (age >= 20 && age <=65) {
+        console.log('adult');
+    }
+    else if (age >= 66) {
+        console.log('elder');
+    }
+    else {
+        console.log('out of bounds');
+    }
+}
+
+solve(20)
+solve(-2)
+solve(4)
+---------------------------
+02. Vacation
+
+function solve(groupCount, groupType, dayOfWeek) {
+    let price = 0;
+    if (groupType === "Students") {
+        if (dayOfWeek === "Friday") {
+            price = 8.45 * groupCount;
+        }
+        else if (dayOfWeek === "Saturday") {
+            price = 9.80 * groupCount;
+        }
+        else if (dayOfWeek === "Sunday") {
+            price = 10.46 * groupCount;
+        }
+        if (groupCount >= 30) {
+            price = 0.85 * price;
+        }
+    }
+    else if (groupType === "Business") {
+        let perPerson = 0
+        if (dayOfWeek === "Friday") {
+            perPerson = 10.90;
+        }
+        else if (dayOfWeek === "Saturday") {
+            perPerson = 15.60;
+        }
+        else if (dayOfWeek === "Sunday") {
+            perPerson = 16;
+        }
+        price = perPerson * groupCount;
+        if (groupCount >= 100) {
+            price -= perPerson * 10;
+        }
+    }
+    else if (groupType === "Regular") {
+        if (dayOfWeek === "Friday") {
+            price = 15 * groupCount;
+        }
+        else if (dayOfWeek === "Saturday") {
+            price = 20 * groupCount;
+        }
+        else if (dayOfWeek === "Sunday") {
+            price = 22.50 * groupCount;
+        }
+        if (groupCount >= 10 && groupCount <= 20) {
+            price = 0.95 * price;
+        }
+    }
+    console.log(`Total price: ${price.toFixed(2)}`);
+}
+
+solve(40,
+    "Regular",
+    "Saturday")
+
+----------------------------------------
+03. Leap Year
+
+function solve(year){
+    if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+        console.log('yes')
+    }
+    else {
+        console.log('no')
+    }
+}
+
+
+solve(1984)
+solve(2003)
+solve(4)
+--------------------------------------
+04. Print And Sum
+
+function solve(num1, num2){
+    let result = []
+    for (x = num1; x <= num2; x++) {
+        result.push(x)
+    }
+    console.log(result.join(' '))
+    let sum =
+        result.reduce((a, b) => a + b, 0)
+    console.log(`Sum: ${sum}`)
+}
+
+-----VAR2
+
+function solve(num1, num2){
+    let result = '';
+    let sum = 0;
+    for (x = num1; x <= num2; x++) {
+        result += x + ' ';
+        sum += x
+    }
+    console.log(result)
+    console.log(`Sum: ${sum}`)
+}
+
+-----------------------------------------
+05. Multiplication Table
+
+function solve(num){
+    for (x = 1; x <= 10; x++) {
+        console.log(`${num} X ${x} = ${num*x}`)
+    }
+}
+
+solve(5)
+-----------------------------------------
+06. Sum Digits
+
+function solve(num){
+    let sum = 0;
+    let str = num.toString();
+    for (let x=0; x < str.length; x++) {
+        let curr = str[x];
+        sum += Number(curr)
+    }
+    console.log(sum)
+}
+
+solve(543)
+------------------------------------------
+07. Chars to String
+
+function solve(char1,char2,char3){
+    let chars = '';
+    chars += char1 + char2 + char3
+    console.log(chars)
+}
+
+solve('a',
+'b',
+'c'
+)
+
+--------------------------------------
+08. Reversed Chars
+
+function solve(char1,char2,char3){
+    let chars = [char1, char2, char3];
+    console.log(...chars.reverse());
+}
+
+solve('a',
+'b',
+'c'
+)
+----------------------------------------
+09. Fruit
+
+function solve(fruit, weightGr, pricePerKilo){
+    let weight = weightGr / 1000
+    let money = pricePerKilo * weight
+    console.log(`I need $${money.toFixed(2)} to buy ${weight.toFixed(2)} kilograms ${fruit}.`
+    )
+}
+
+solve('orange', 2500, 1.80)
+-------------------------------------------
+10. Same Numbers
+
+function solve(num) {
+    let digits = Array.from(String(num));
+    console.log(digits.every((val, i, arr) => val === arr[0]));
+
+    let dig = digits.map(str => {
+        return parseInt(str, 10);
+    });
+    let sum = dig.reduce((partialSum, a) => partialSum + a, 0)
+    console.log(sum)
+}
+
+solve(2222222)
+
+----VAR2
+
+"use strict";
+
+function checkIfAllDigitsAreSame(number) {
+    const digitsString = number.toString();
+    let isConsistent = true;
+    let sum = Number(digitsString[0])
+
+    for (let index=1; index < digitsString.length; index ++) {
+        sum += Number(digitsString[index])
+        if (digitsString[index] !== digitsString[index - 1]) {
+            isConsistent = false;
+        }
+    }
+
+    console.log(isConsistent);
+    console.log(sum);
+}
+
+checkIfAllDigitsAreSame(2222222)
+
+------VAR3
+
+"use strict";
+ 
+function checkIfAllDigitsAreSame(number) {
+    const digits = Array.from(String(number), Number)
+    const isConsistent = new Set(digits).size === 1;
+    const sum = digits.reduce(function (total, number) {return total + number;}, 0) 
+ 
+ 
+    console.log(isConsistent);
+    console.log(sum);
+}
+ 
+checkIfAllDigitsAreSame(2222222)
+
+----------------------------------------------
+11. Road Radar
+
+function solve(speed, area) {
+    let limit = 0;
+    if (area === "motorway") {
+        limit = 130;
+    }
+    else if (area === "interstate") {
+        limit = 90;
+    }
+    else if (area === "city") {
+        limit = 50;
+    }
+    else if (area === "residential") {
+        limit = 20;
+    }
+    if (speed <= limit) {
+        console.log(`Driving ${speed} km/h in a ${limit} zone`
+        )
+    }
+    else {
+        let status = ''
+        let difference = speed - limit
+        if (difference <= 20) {
+            status = 'speeding'
+        }
+        else if (difference <= 40) {
+            status = 'excessive speeding'
+        }
+        else {
+            status = 'reckless driving'
+        }
+        console.log(`The speed is ${difference} km/h faster than the allowed speed of ${limit} - ${status}`
+        )
+    }
+}    
+
+solve(40, 'city')
+
+-----VAR2
+
+function checkSpeeding(speed, area) {
+    const speedLimits = {
+        motorway: 130, 
+        interstate: 90, 
+        city: 50, 
+        residential: 20,
+    }
+    const currentSpeedLimit = speedLimits[area];
+    const speedOverLimit = speed - currentSpeedLimit;
+
+    if (speedOverLimit <= 0) {
+        console.log(`Driving ${speed} km/h in a ${currentSpeedLimit} zone`);
+        return
+    };
+
+    const speedingMessage = 
+    speedOverLimit <= 20 
+    ? "speeding"
+    : speedOverLimit <= 40
+    ? "excessive speeding"
+    : "reckless driving" ;
+
+    console.log(`The speed is ${difference} km/h faster than the allowed speed of ${limit} - ${speedingMessage}`)
+}
+
+checkSpeeding(40, 'city')
+
+---------------------------------
+12. Cooking by Numbers
+
+function solve(num1, op1, op2, op3, op4, op5) {
+    let result = num1;
+    let opList = [op1, op2, op3, op4, op5];
+    for (let op of opList) {
+        if (op === "chop") {
+            result /= 2;
+        }
+        else if (op === "dice") {
+            result = Math.sqrt(result);
+        }
+        else if (op === "spice") {
+            result += 1
+        }
+        else if (op === "bake") {
+            result *= 3
+        }
+        else if (op === "fillet") {
+            result = 0.8 * result
+        }
+        console.log(result)
+    }  
+}    
+
+solve('9', 'dice', 'spice', 'chop', 'bake',
+'fillet')
+
+---VAR2
+
+"use strict";
+
+function solve(number, ...commands) {
+    let sum = Number(number)
+
+    for (let index = 0; index < commands.length; index++) {
+        const command = commands[index];
+
+        switch (command) {
+            case "chop":
+                sum /= 2;
+            case "dice":
+                sum = Math.sqrt(number);
+            case "spice":
+                sum += 1;
+            case "bake":
+                sum *= 3;
+            case "fillet":
+                sum -= sum * 0.2;
+        }
+        console.log(sum)
+    }
+}
+------------------------------------
+13. Array Rotation - NOT FINISHED
+
+function solve(arr, rotationCount) {
+
+    for (let index = 0; index < rotationCount; index++) {
+        const firstElement = arr.shift();
+        arr.push(firstElement)
+    }
+    
+    console.log(arr.join(' '));
+}
+
+solve([1, 2, 3, 4, 5], 2)
+solve([51, 47, 32, 61, 21], 2)
+-------------------------------------
+14. Print every N-th Element from an Array
+
+function solve(array, n) {
+    arrayToPrint = []
+    for (x=0; x < array.length; x += n) {
+        arrayToPrint.push(array[x])
+    }
+    return(arrayToPrint) 
+}
+
+console.log(solve(['5',
+'20',
+'31',
+'4',
+'20'],
+2
+))
+---------------------------------------
+15. List Of Names
+
+function solve(array) {
+    array.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+    arrayToPrint = []
+    for (x=1; x <= array.length; x ++) {
+        arrayToPrint.push(`${x}.${array[x-1]}`)
+    }
+    for (let el of arrayToPrint) {
+    console.log(el)
+    }
+}
+
+---VAR2 
+
+function solve(array) {
+    let number = 0;
+    array.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())).forEach((element) => { console.log(`${++number}.${element}`) });
+}
+------------------------------------------
+16. Sorting Numbers
+
+function solve(array) {
+    let newArray = []
+    let small = []
+    let large = []
+ 
+    array.sort((function(a, b){return a-b}))
+ 
+    let half = array.length / 2 
+    for (x = 0; x < half; x++) {
+        small.push(array[x])}
+    for (x = array.length-1;x>=half; x--) {
+        large.push(array[x])
+        }
+ 
+    while (newArray.length < array.length) {
+        newArray.push(small.shift())
+        newArray.push(large.shift())
+    }
+ 
+    return newArray
+}
+
+---VAR2
+
+function sortList(arr) {
+    const sortedArray = arr.sort((a,b) => a - b);
+    const resultArray = [];
+    const length = arr.length;
+
+    for (let index = 0; index < length; index++) {
+        if (index % 2 === 0) {
+            resultArray.push(sortedArray.shift());
+        } else {
+            resultArray.push(sortedArray.pop());
+        }
+    }
+
+    return(resultArray)
+}
+
+-----------------------------------------
+17. Reveal Words
+
+function solve(words, text) {
+    let wordsList = words.split(", ")
+    for (let word of wordsList) {
+        if (text.includes("*".repeat(word.length))) {
+            text = text.replace("*".repeat(word.length), word)
+        }
+    }
+    console.log(text)
+}
+
+solve('great, learning','softuni is ***** place for ******** new programming languages')
+----------------------------------------
+18. Modern Times of #(HashTag) --- NOT FINISHED
+
+function solve(text) {
+    let wordsList = text.split(" ")
+    for (let word of wordsList) {
+        if (/^#[a-zA-Z]+/.test(word)) {
+            console.log(word.substring(1, word.length))
+            }
+        }
+    }
+-------------------------------
+19. String Substring
+
+function solve(searchedWord, text) {
+    let wordsList = text.split(" ")
+    for (let word of wordsList) {
+        if (word.toLowerCase() === searchedWord.toLowerCase()) {
+            console.log(word.toLowerCase())
+            var found = true
+            break
+        }}
+    if (!found)  {
+        console.log(`${
+            searchedWord.toLowerCase()} not found!`)
+    }
+}
+
+----VAR2
+
+function solve(searchedWord, text) {
+    let wordsList = text.split(" ")
+    for (let word of wordsList) {
+        if (word.toLowerCase() === searchedWord.toLowerCase()) {
+            console.log(word.toLowerCase())
+            return
+        }}
+    console.log(`${searchedWord.toLowerCase()} not found!`)
+}
+--------------------------------------
+20. Pascal-Case Splitter
+
+function solve(text) {
+    let list = [];
+    let textList = text.split('')
+    for (x = 0; x<textList.length; x++) {
+        let letter = textList[x]
+        if (letter === letter.toUpperCase()) {
+            if (word) {
+				list.push(word)
+			}
+            var word = ''
+        }
+        word += letter
+        if (x === textList.length-1) {
+			list.push(word)
+		}
+    }
+    console.log(list.join(', '))
+}
+
+solve('SplitMeIfYouCanHaHaYouCantOrYouCan')
+
+-----------------------------------------
