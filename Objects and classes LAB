@@ -106,6 +106,7 @@ game.get{};
 //0
 //1
 
+JSON.stringify(smth) - smth can only be object or array - returns object represented as string.
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 04. Convert to Object
