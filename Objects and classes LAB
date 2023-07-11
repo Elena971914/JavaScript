@@ -1,0 +1,67 @@
+01. Person info
+
+function getPersonInfo(firstName, lastName, age) {
+    person = {
+        firstName,
+        lastName,
+        age
+    };
+
+    return person;
+}
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+02. City 
+
+function getCityInfo(obj) {
+    keys = Object.keys(obj)
+    for (let key of keys) {
+        console.log(`${key} -> ${obj[key]}`)
+    }
+}
+
+getCityInfo({
+    name: "Plovdiv",
+    area: 389,
+    population: 1162358,
+    country: "Bulgaria",
+    postCode: "4000"
+   }
+)
+
+03. City Taxes
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+04. Convert to Object
+
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+05. Convert to JSON
+
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+06. Phone Book
+
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+07. Meetings
+
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+08. Address Book
+
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+09. Cats
+
+
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
+10. Songs
