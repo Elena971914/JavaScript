@@ -82,6 +82,30 @@ console.log(city.treasury);
 city.applyGrowth(5);
 console.log(city.population);
 
+ARROW functions don't have their own context of this. It always get the this from the function they are in. (Not from the object they are called on)
+If the functions are assigned to a variable, the context of this will be lost.
+
+//let grow = city.applyGrowth(5);
+
+----------
+
+function createGame() {
+  let score = 0;
+
+return {
+  inc: () => score++,
+  get: () => console.log(score),
+ };
+}
+
+const game = createGame();
+game.get();
+game.inc();
+game.get{};
+
+//0
+//1
+
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 04. Convert to Object
