@@ -106,16 +106,40 @@ game.get{};
 //0
 //1
 
-JSON.stringify(smth) - smth can only be object or array - returns object represented as string.
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 04. Convert to Object
 
+function objConverter(json) {
+    let person= JSON.parse(json);   //convert the string to object
+    let entries = Object.entries(person);   /// get the object values in a matrix
+    for (let [key, value] of entries) {    ///unpack the rows of the martix one by one
+    console.log(`${key}: ${value}`);
+    }
+    }
+
+objConverter('{"name": "Peter", "age": 35, "town": "Plovdiv"}')
+
+JSON.stringify(smth) - smth can only be object or array - returns object represented as string.
+JSON.parse(smth) - smth is a json string or file and the return is object
+
+If there are functions in the object they are not included in the made up JSON string. Undefined values are also stripped. Null is included.
 
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 05. Convert to JSON
 
+function JSONConverter(name, lastName, hairColor) {
+    obj = {
+        name,
+        lastName,
+        hairColor
+    }
+    console.log(JSON.stringify(obj))
+}
+
+JSONConverter('George', 'Jones',
+'Brown')
 
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
