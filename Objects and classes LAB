@@ -162,9 +162,31 @@ collectPhones(['Tim 0834212554',
 )
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
+We can check if a object has a property in the object we want we use obj.hasOwnProperty('name') - obj is the object, name should be string.
+If we try to access it through obj[name] we can find it in the prototype, while it doesn't exist in the desired object.
+
+
 07. Meetings
 
+function schedule(input) {
 
+    const schedule = input.reduce((acc, curr) => {
+        const [day, name] = curr.split(' ')
+
+        if (acc.hasOwnProperty(day)) {
+            console.log(`Conflict on ${day}!`);
+        } else {
+            acc[day] = name;
+            console.log(`Scheduled for ${day}`);
+        }
+
+        return acc;
+}, {});
+
+    Object.keys(schedule).forEach((key) => {console.log(`${key} -> ${schedule[key]}`)}) 
+}
+
+schedule(['Monday Peter', 'Wednesday Bill', 'Monday Tim', 'Friday Tim']);
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 08. Address Book
