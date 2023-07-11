@@ -145,7 +145,21 @@ JSONConverter('George', 'Jones',
 
 06. Phone Book
 
+function collectPhones(arr) {
+    const phoneObject = arr.reduce((acc, curr) => {    //acc is what is filled, curr is what we get on every iteration reduce makes
+        const [name, phone] = curr.split(' ');    
+        acc[name] = phone;   //making an object property 
+        return acc;  //saving the new look of the object
+    }, {});    //{} is the initial value
 
+    Object.keys(phoneObject).forEach((key) => {console.log(`${key} -> ${phoneObject[key]}`)})  //get all keys, iterate through them with forEach which receives the current key and logs the final output
+}
+
+collectPhones(['Tim 0834212554',
+'Peter 0877547887',
+'Bill 0896543112',
+'Tim 0876566344']
+)
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 07. Meetings
