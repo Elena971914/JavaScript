@@ -1,3 +1,20 @@
+Objects are always assigned by refference. If we change them in a function they are changed out of the function as well.
+Making a copy : a = {a: 1} ; aCopy = {...a}
+
+This is not like that when we are working with primitive types:
+
+function getCityInfo(a) {
+    a = 20;
+    }
+let a = 10;
+
+console.log(a)
+getCityInfo(a)
+console.log(a) 
+
+//10
+//10
+
 01. Person info
 
 function getPersonInfo(firstName, lastName, age) {
@@ -13,6 +30,15 @@ function getPersonInfo(firstName, lastName, age) {
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 02. City 
+
+function getCityInfo(city) {
+    let entries = Object.entries(city);
+    for (let [ key, value ] of entries) {
+    console.log(`${key} -> ${value}`);
+    }
+}
+
+---VAR2
 
 function getCityInfo(obj) {
     keys = Object.keys(obj)
@@ -30,7 +56,31 @@ getCityInfo({
    }
 )
 
+☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
+
 03. City Taxes
+
+function cityTaxes(name, population, treasury) {
+    cityObj = {
+        name, 
+        population,
+        treasury,
+        taxRate: 10,
+        collectTaxes() {this.treasury += Math.floor(this.population * this.taxRate)},
+        applyGrowth(percentage) {this.population += Math.floor(this.population * percentage/100)},
+        applyRecession(percentage) {this.treasury -= Math.floor(this.treasury * percentage/100)}
+    }
+    return cityObj
+}
+
+const city =
+ cityTaxes('Tortuga',
+ 7000,
+ 15000);
+city.collectTaxes();
+console.log(city.treasury);
+city.applyGrowth(5);
+console.log(city.population);
 
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
