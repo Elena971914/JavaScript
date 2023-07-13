@@ -191,6 +191,29 @@ schedule(['Monday Peter', 'Wednesday Bill', 'Monday Tim', 'Friday Tim']);
 
 08. Address Book
 
+function storeAddresses(input) {
+
+    const addressBook = input.reduce((acc, line) => {
+        const [name, address] = line.split(":");
+        acc[name] = address;
+        return acc;
+    },
+        {});
+
+    
+    var sortedKeys = Object.keys(addressBook).sort()
+    sortedKeys.forEach (name => {
+        console.log(`${name} -> ${addressBook[name]}`)
+    })
+}
+
+storeAddresses(['Tim:Doe Crossing',
+    'Bill:Nelson Place',
+    'Peter:Carlyle Ave',
+    'Bill:Ornery Rd']
+);
+
+
 
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
