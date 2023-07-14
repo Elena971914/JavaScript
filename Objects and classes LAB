@@ -222,6 +222,25 @@ storeAddresses(['Tim:Doe Crossing',
 
 09. Cats
 
+function createCat(input) {
+    class Cat{
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+    
+        meow() {
+            console.log(`${this.name}, age ${this.age} says Meow`)
+        }
+    }
+    for (let catData of input) {
+        let [name, age] = catData.split(" ")
+        let currentCat = new Cat(name, age)
+        currentCat.meow()
+    }
+}
+
+createCat(['Candy 1', 'Poppy 3', 'Nyx 2'])
 
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
