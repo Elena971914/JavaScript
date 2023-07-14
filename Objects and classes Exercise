@@ -41,6 +41,35 @@ formatCityInfo(['Sofia | 42.696552 | 23.32601',
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 03. Store Provision
 
+function storeProvision(currentStock, productsForDelivery) {
+    const stock = {};
+    const allProvisions = currentStock.concat(productsForDelivery)
+    for (x = 0; x < allProvisions.length; x ++) {
+        if (x % 2 == 0) {
+            if (allProvisions[x] in stock) {
+                stock[allProvisions[x]] += Number(allProvisions[x+1])
+            } else {
+            stock[allProvisions[x]] = Number(allProvisions[x+1])
+            }
+        }
+    }
+    for (let product of Object.entries(stock)) {
+        let [productName, qty] = product;
+        console.log(`${productName} -> ${qty}`)
+    }
+}
+
+
+storeProvision([
+    'Chips', '5', 'CocaCola', '9', 'Bananas',
+    '14', 'Pasta', '4', 'Beer', '2'
+    ],
+    [
+    'Flour', '44', 'Oil', '12', 'Pasta', '7',
+    'Tomatoes', '70', 'Bananas', '30'
+    ]
+)
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 04. Movies
 
