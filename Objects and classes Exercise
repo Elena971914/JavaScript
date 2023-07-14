@@ -1,5 +1,27 @@
 01. Employees
 
+function getEmployees(listOfEmployees) {
+    const employees = []
+    for (let name of listOfEmployees) {
+        let currentEmployee = {}
+        currentEmployee['Name'] = name;
+        currentEmployee['Personal Number'] = name.length;
+        employees.push(currentEmployee)
+    }
+
+    for (let employee of employees) {
+        console.log(`Name: ${employee['Name']} -- Personal Number: ${employee["Personal Number"]}`)
+    }
+}
+
+getEmployees([
+    'Silas Butler',
+    'Adnaan Buckley',
+    'Juan Peterson',
+    'Brendan Villarreal'
+    ]
+    )
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 02. Towns
 
