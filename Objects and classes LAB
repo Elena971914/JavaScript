@@ -245,3 +245,41 @@ createCat(['Candy 1', 'Poppy 3', 'Nyx 2'])
 ☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️
 
 10. Songs
+
+function solve(input) {
+    class Song {
+        constructor(typeList, name, time) {
+            this.typeList = typeList;
+            this.name = name;
+            this.time = time;
+        };
+    }
+    let numberSongs = input.shift();
+    let typeToDisplay = input.pop();
+
+    const result = input.map((songAsText) => {
+        let [type, name, length] = songAsText.split("_");
+        let song = new Song(type, name, length);
+
+        return song
+    })
+    .filter((song) => {
+        if (typeToDisplay === "all") {
+            return song;
+        }
+
+        return song.typeList === typeToDisplay;
+    })
+    .map((song) => song.name)
+    .join('\n')
+
+    console.log(result)
+}
+
+solve([4,
+    'favourite_DownTown_3:14',
+    'listenLater_Andalouse_3:24',
+    'favourite_In To The Night_3:58',
+    'favourite_Live It Up_3:48',
+    'listenLater']
+    )
