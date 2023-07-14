@@ -73,6 +73,67 @@ storeProvision([
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 04. Movies
 
+function getMovieInfo(array) {
+    function getData(command, elements) {
+        var movieName = '';
+        var counter = 1;
+        for (x = 0; elements[x] !== command; x++) {
+            movieName += elements[x] + " "
+            counter++;
+        }
+        movieName = movieName.trim()
+        while (counter) {
+            elements.shift()
+            counter--
+        }
+        let other = elements.join(' ')
+        return [movieName, other]
+    }
+
+    function updateInfo(movieName, update, other) {
+        for (let obj of movies) {
+            if (obj.name === movieName) {
+                obj[update] = other
+            }
+        }
+    }
+    var movies = [];
+    for (let line of array) {
+        const elements = line.split(" ")
+        if (elements.includes('addMovie')) {
+            let movie = {};
+            elements.shift();
+            movie["name"] = elements.join(' ');
+            movie["director"] = null;
+            movie["date"] = null;
+            movies.push(movie)
+        } else if (elements.includes('directedBy')) {
+            const [movieName, other] = getData('directedBy', elements)
+            updateInfo(movieName, 'director', other)
+        } else if (elements.includes('onDate')) {
+            const [movieName, other] = getData('onDate', elements)
+            updateInfo(movieName, 'date', other)
+        }
+    }
+
+    for (let movie of movies) {
+        if (movie.director !== null && movie.date !== null) {
+            console.log(JSON.stringify(movie))
+        }
+    }
+}
+
+
+getMovieInfo([
+    'addMovie The Avengers',
+    'addMovie Superman',
+    'The Avengers directedBy Anthony Russo',
+    'The Avengers onDate 30.07.2010',
+    'Captain America onDate 30.07.2010',
+    'Captain America directedBy Joe Russo'
+]
+)
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 05. Inventory
 
