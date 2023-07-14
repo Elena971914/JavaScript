@@ -205,6 +205,9 @@ function storeAddresses(input) {
     sortedKeys.forEach (name => {
         console.log(`${name} -> ${addressBook[name]}`)
     })
+//let sorted = Object.entries(addressBook);
+//sorted.sort((a, b) => a[0].localeCompare(b[0]));
+
 }
 
 storeAddresses(['Tim:Doe Crossing',
