@@ -134,6 +134,38 @@ getMovieInfo([
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 05. Inventory
 
+function storeHeroes(array) {
+    const inventory = [];
+
+    for (let line of array) {
+        heroObj = {}
+        const [name, level, items] = line.split(" / ")
+        heroObj["Hero"] = name;
+        heroObj['level'] = Number(level);
+        heroObj['items'] = []
+        for (let item of items) {
+            heroObj.items.push(item)
+        }
+        inventory.push(heroObj)
+    }
+
+    inventory.sort((a, b) => {
+        return a.level - b.level
+    })
+
+    for (let obj of inventory) {
+        itemsList = obj.items.join("")
+        console.log(`Hero: ${obj.Hero}\nlevel => ${obj.level}\nitems => ${itemsList.trim()}`)
+    }
+}
+
+storeHeroes([
+    'Isacc / 25 / Apple, GravityGun',
+    'Derek / 12 / BarrelVest, DestructionSword',
+    'Hes / 1 / Desolator, Sentinel, Antara'
+]
+)
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 06. Word Tracker
 
