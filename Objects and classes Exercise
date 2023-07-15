@@ -169,6 +169,37 @@ storeHeroes([
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 06. Word Tracker
 
+function trackWords(array) {
+    const searchingFor = array.shift().split(" ");
+    const occurrences = {};
+    
+    for (let searchedWord of searchingFor) {
+        occurrences[searchedWord] = 0;
+        for (let currentWord of array) {
+            if (currentWord === searchedWord) {
+                occurrences[searchedWord]++;
+            }
+        }
+    }
+    var sorted = []
+    for (let word in occurrences) {
+        sorted.push([word, occurrences[word]])
+    }
+    sorted.sort((a,b) =>{ return b[1] - a[1]})
+
+    for (let [word, count] of sorted) {
+        console.log(`${word} - ${count}`)
+    }
+}
+
+trackWords([
+    'this sentence',
+    'In', 'this', 'sentence', 'you', 'have',
+    'to', 'count', 'the', 'occurrences', 'of',
+    'the', 'words', 'this', 'and', 'sentence',
+    'because', 'this', 'is', 'your', 'task'
+]
+)
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 07. Odd Occurrences
 
