@@ -82,10 +82,7 @@ function getMovieInfo(array) {
             counter++;
         }
         movieName = movieName.trim()
-        while (counter) {
-            elements.shift()
-            counter--
-        }
+        elements.splice(0,counter)
         let other = elements.join(' ')
         return [movieName, other]
     }
