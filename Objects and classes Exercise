@@ -203,8 +203,66 @@ trackWords([
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 07. Odd Occurrences
 
+function printOddOccurrences(array) {
+    const occurrences = {};
+    for (let word of array.split(' ')) {
+        word = word.toLowerCase()
+        if (occurrences.hasOwnProperty(word)) {
+            occurrences[word] ++ ;
+        } else {
+            occurrences[word] = 1;
+        }
+    }
+
+    let result = []
+    for (let word in occurrences) {
+        if (!(occurrences[word] % 2 === 0)) {
+            result.push(word)  
+        }
+    }
+    console.log(result.join(" "))
+}
+
+printOddOccurrences('Cake IS SWEET is Soft CAKE sweet Food')
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 08. Piccolo
+
+function recordCarNumbers(array) {
+    var cars = []
+    for (let line of array) {
+        const [command, number] = line.split(", ")
+        if (command === "IN") {
+            if (!(cars.includes(number))) {
+                cars.push(number)
+            }
+        } else if (command === "OUT") {
+            if (cars.includes(number)) {
+                cars = cars.filter((curNumber) => { return number !== curNumber })
+            }
+        }
+    }
+    if (!cars) {
+        console.log("Parking Lot is Empty");
+        return;
+    }
+    sorted = cars.sort()
+    for (let car of sorted) {
+        console.log(car)
+    }
+}
+
+recordCarNumbers(['IN, CA2844AA',
+    'IN, CA1234TA',
+    'OUT, CA2844AA',
+    'IN, CA9999TT',
+    'IN, CA2866HI',
+    'OUT, CA1234TA',
+    'IN, CA2844AA',
+    'OUT, CA2866HI',
+    'IN, CA9876HH',
+    'IN, CA2822UU']
+)
 
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 09. Make a Dictionary
