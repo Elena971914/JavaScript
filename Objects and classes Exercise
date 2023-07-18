@@ -22,6 +22,19 @@ getEmployees([
     ]
     )
 
+---------------------VAR 2 
+
+function getEmployees(input) {
+    const employees = input.reduce((acc, curr) => {
+        acc[curr] = curr.length;
+        return acc;
+    }, {});
+
+    Object.entries(employees).forEach(([name, number]) => {
+        console.log(`Name: ${name} -- Personal Number: ${number}`)
+    });
+}
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 02. Towns
 
