@@ -266,6 +266,35 @@ trackWords([
     'because', 'this', 'is', 'your', 'task'
 ]
 )
+
+-------------------VAR 2
+
+function trackWords(input) {
+    const [searchedWords, ...words] = input
+
+    const wordOccurrences = searchedWords.split(" ").reduce((acc, curr) => {
+        acc[curr] = 0
+        return acc
+    }, {})
+
+    words.forEach((word) => {
+        if (wordOccurrences.hasOwnProperty(word)) {
+            wordOccurrences[word] += 1
+        }
+    })
+
+    let sorted = []
+    for (let word in wordOccurrences) {
+        sorted.push([word, wordOccurrences[word]])
+    }
+
+    sorted.sort((a,b) => {return b[1] - a[1]})
+
+    sorted.forEach((pair) => {
+        console.log(`${pair[0]} - ${pair[1]}`)
+    })
+}
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 07. Odd Occurrences
 
