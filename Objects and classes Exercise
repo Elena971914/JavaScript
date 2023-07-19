@@ -167,6 +167,36 @@ getMovieInfo([
 ]
 )
 
+------------------------ VAR 2
+
+function getMovieInfo(input) {
+    let movies = [];
+
+    input.forEach((command) => {
+        if (command.includes("addMovie")) {
+        const[_, name] = command.split("addMovie ");
+        movies.push( { name })
+        }
+        else if (command.includes("directedBy")) {
+            const[nameMovie, directorMovie] = command.split(" directedBy ")
+            const movie = movies.find((m) => m.name === nameMovie) 
+            
+            if (movie) {
+                movie.director = directorMovie
+            }
+        }
+        else if (command.includes("onDate")) {
+            const[nameMovie, dateMovie] = command.split(" onDate ")
+            const movie = movies.find((m) => m.name === nameMovie) 
+            
+            if (movie) {
+                movie.date = dateMovie
+            }
+    }});
+
+    movies.filter((m) => m.name && m.director && m.date).forEach((m) => console.log(JSON.stringify(m)))
+}
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 05. Inventory
 
