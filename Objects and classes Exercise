@@ -245,6 +245,32 @@ storeHeroes([
 ]
 )
 
+---------------------------------------------------VAR 2
+
+function storeHeroes(array) {
+    const inventory = array.reduce((acc, curr) => {
+        let heroObj = {}
+        const [name, level, items] = curr.split(" / ")
+        heroObj["Hero"] = name;
+        heroObj['level'] = Number(level);
+        heroObj['items'] = []
+        for (let item of items) {
+            heroObj.items.push(item)
+        }
+        acc.push(heroObj)
+        return acc;
+    }, [])
+
+    inventory.sort((a, b) => {
+        return a.level - b.level
+    })
+
+    for (let obj of inventory) {
+        itemsList = obj.items.join("")
+        console.log(`Hero: ${obj.Hero}\nlevel => ${obj.level}\nitems => ${itemsList.trim()}`)
+    }
+}
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 06. Word Tracker
 
