@@ -421,6 +421,23 @@ makeDictionary([
     '{"Music":"Vocal or instrumental sounds (or both) combined in such a way as to produce beauty of form, harmony, and expression of emotion."} ', '{"Art":"The expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power."} '
     ])
 
+
+--------------------------------------VAR2
+
+function makeDictionary(input) {
+    const dictionary = input
+    // ["", "", "", ""]
+    .map((jsonString) => JSON.parse(jsonString))
+    // map -> [{}, {}, {}, {}]
+    .reduce((acc, curr) => {
+        return {...acc, ...curr}
+    }, {})
+    //reduce -> [coffee, ..., ...]
+
+    console.log(JSON.stringify(dictionary, null, 2))
+}
+
+
 🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸🩸
 10. Class Vehicle
 
