@@ -44,7 +44,42 @@ expect(storage.totalCost).to.equal(53.8);
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 02. Catalogue
 
+function solve(input) {
+    const products = input.reduce((acc, curr) => {
+        let [name, price] = curr.split(' : ');
+        acc[name] = price;
+        return acc;
+    }, {})
 
+    sorted = Object.keys(products)
+        .map(key => key.toLowerCase())
+        .sort()
+
+    let letter = sorted[0][0]
+
+    for (let key of sorted) {
+        for (let originalKey of Object.keys(products)) {
+            if (key === originalKey.toLowerCase()) {
+                if (originalKey[0][0] !== letter) {
+                    letter = originalKey[0]
+                    console.log(letter)
+                }
+                console.log(`  ${originalKey}: ${products[originalKey]}`)
+            }
+        }
+    }
+}
+
+solve([
+    'Appricot : 20.4',
+    'Fridge : 1500',
+    'TV : 1499',
+    'Deodorant : 10',
+    'Boiler : 300',
+    'Apple : 1.25',
+    'Anti-Bug Spray : 15',
+    'T-Shirt : 10'
+])
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 03. Class Laptop
 
