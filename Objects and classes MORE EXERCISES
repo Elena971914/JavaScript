@@ -126,7 +126,55 @@ console.log(laptop.price)
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 04. Flight Schedule
 
+function solve([flights, changedStatuses, status]) {
+    const flightMap = flights.reduce((acc, curr) => {
+        const [number, ...destinationWords] = curr.split(' ');
+        const Destination = destinationWords.join(" ");
+        acc[number] = {
+            Destination,
+            Status: null
+        }
+        return acc;
+    }, {})
 
+    changedStatuses.forEach(line => {
+        let [number, status] = line.split(" ");
+        if (flightMap[number]) {
+        flightMap[number].Status = status;
+}});
+
+    status = status.join(" ")
+    if (status === "Ready to fly") {
+        Object.entries(flightMap).forEach(([number, data]) => {
+            if (data.Status === null) {
+                data.Status = "Ready to fly"
+                console.log(data)
+            } 
+        })
+    } else {
+        Object.entries(flightMap).forEach(([number, data]) => {
+            if (data.Status === status) {
+                console.log(data)
+    }})
+}}
+
+
+solve([['WN269 Delaware',
+'FL2269 Oregon',
+'WN498 Las Vegas',
+'WN3145 Ohio',
+'WN612 Alabama',
+'WN4010 New York',
+'WN1173 California',
+'DL2120 Texas',
+'KL5744 Illinois',
+'WN678 Pennsylvania'],
+['DL2120 Cancelled',
+'WN612 Cancelled',
+'WN1173 Cancelled',
+'SK430 Cancelled'],
+['Cancelled']
+])
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 05. School Register
 
