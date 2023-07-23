@@ -369,7 +369,58 @@ function viewGarages(input) {
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 09. Armies
 
+60/100
 
+function sortArmies(input) {
+    const leaders = {}
+    for (let line of input) {
+        if (line.includes("arrives")) {
+            let leader = {};
+            leaderName = line.replace(" arrives", "");
+            leader.armies = {};
+            leader.totalCount = 0;
+            leaders[leaderName] = leader
+        } else if (line.includes(":")) {
+            let [leader, armyData] = line.split(": ")
+            let [armyName, armyCount] = armyData.split(", ")
+            if (!leaders.hasOwnProperty(leader)) { continue }
+            leaders[leader].armies[armyName] = Number(armyCount)
+            leaders[leader].totalCount += Number(armyCount)
+        } else if (line.includes("+")) {
+            let [armyName, armyCount] = line.split(" + ")
+            Object.keys(leaders).forEach(leader => {
+                if (leaders[leader].armies.hasOwnProperty(armyName)) {
+                    leaders[leader].armies[armyName] += Number(armyCount)
+                    leaders[leader].totalCount += Number(armyCount)
+                }
+            })
+        } else if (line.includes("defeated")) {
+            let leader = line.replace(" defeated", "")
+            if (leaders.hasOwnProperty(leader)) {
+                delete leaders[leader]
+            }
+        }
+    }
+
+    let sortByTotal = []
+    Object.keys(leaders).forEach(leaderName => sortByTotal.push(leaders[leaderName].totalCount))
+    sortByTotal.sort().reverse()
+
+    for (let currentTotal of sortByTotal) {
+        Object.keys(leaders).forEach(curLead => {
+            if (leaders[curLead].totalCount === currentTotal) {
+                console.log(`${curLead}: ${currentTotal}`)
+                // leaders[curLead].armies
+                Object.keys(leaders[curLead].armies).sort(function (a, b) { return leaders[curLead].armies[b] - leaders[curLead].armies[a] }).forEach(key => console.log(`>>> ${key} - ${leaders[curLead].armies[key]}`))
+            }
+        })
+    }
+}
+
+
+sortArmies(['Rick Burr arrives', 'Fergus: Wexamp, 30245', 'Rick Burr: Juard, 50000', 'Findlay arrives', 'Findlay: Britox, 34540', 'Wexamp + 6000',
+    'Juard + 1350', 'Britox + 4500',
+    'Porter arrives', 'Porter: Legion, 55000', 'Legion + 302', 'Rick Burr defeated', 'Porter: Retix, 3205'])
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 10. Comments
 
