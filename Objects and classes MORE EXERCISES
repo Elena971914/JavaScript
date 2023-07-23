@@ -339,6 +339,33 @@ viewGarages(['1 - color: green, fuel type: petrol',
 '1 - color: dark red, manufacture: WV',
 '2 - fuel type: diesel',
 '3 - color: dark blue, fuel type: petrol'])
+
+----------------------------------------VAR2
+
+function viewGarages(input) {
+    let garages = [];
+    for (const line of input) {
+        let [garageNumber, carInfo] = line.split(' - ');
+        let found = garages.find(g => g.garageNumber === garageNumber);
+        if (!found) {
+            garages.push({
+                garageNumber: garageNumber,
+                carInfo: []
+            });
+            found = garages.find(g => g.garageNumber === garageNumber);
+        }
+        found.carInfo.push(carInfo);
+    }
+    let output = '';
+    garages.forEach(garage => {
+        output += `Garage № ${garage.garageNumber}\n`;
+        for (let currCar of garage.carInfo) {
+            currCar = currCar.replace(/: /g, ' - ');
+            output += `--- ${currCar}\n`;
+        }
+    });
+    console.log(output);
+}
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 09. Armies
 
