@@ -318,7 +318,27 @@ getUniqueSequences(["[-3, -2, -1, 0, 1, 2, 3, 4]",
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 08. Garage
 
+function viewGarages(input) {
+    const garages = {}
+    input.forEach(line => {
+        const [num, data] = line.split(" - ");
+        if (!garages.hasOwnProperty(num)) {
+            garages[num] = []
+        }
+        garages[num].push(data.replaceAll(":", " -"))
+    })
+    Object.keys(garages).forEach(garageNum => {
+        console.log(`Garage № ${garageNum}`)
+        garages[garageNum].forEach(car => console.log(`--- ${car}`))})
+}
 
+viewGarages(['1 - color: blue, fuel type: diesel', '1 - color: red, manufacture: Audi', '2 - fuel type: petrol', '4 - color: dark blue, fuel type: diesel, manufacture: Fiat']
+)
+
+viewGarages(['1 - color: green, fuel type: petrol',
+'1 - color: dark red, manufacture: WV',
+'2 - fuel type: diesel',
+'3 - color: dark blue, fuel type: petrol'])
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 09. Armies
 
