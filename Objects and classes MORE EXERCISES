@@ -263,7 +263,58 @@ getBrowserHistory({
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 07. Sequences
 
+function sequences(input) {
+    input = input
+        .map(JSON.parse)
+        .map(el => el.sort((a, b) => b - a))
+        .map(JSON.stringify);
+    [...new Set(input)]
+        .map(JSON.parse)
+        .sort((a, b) => a.length - b.length)
+        .forEach(el => console.log(`[${el.join(', ')}]`));
+}
 
+------------------------------------------VAR2
+
+function getUniqueSequences(input) {
+    const listOfArrays = input.map(arr => JSON.parse(arr));
+    const uniqueArrays = [listOfArrays[0]];
+
+    for (let array of listOfArrays.slice(1)) {
+        var unique = true
+        for (let pastArray of uniqueArrays) {
+            let one = new Set(array)
+            let two = new Set(pastArray)
+            const isSameSet = (one, two) => {
+                if (one.size != two.size) return false;
+                const arr1 = [...one];
+                const arr2 = [...two];
+                for (let x of arr1) {
+                  if (!two.has(x)) {
+                    return false;
+                  }
+                }
+                for (let x of arr2) {
+                  if (!one.has(x)) {
+                    return false;
+                  }
+                }
+                return true;
+              }
+            if (isSameSet(one, two)) {
+                unique = false
+            }
+            if (unique) {
+                uniqueArrays.push(array)
+            }
+        }
+    }
+    uniqueArrays.sort((a, b) => a.length - b.length).forEach(arr => console.log(arr.sort((a,b) => b - a)))
+}
+
+getUniqueSequences(["[-3, -2, -1, 0, 1, 2, 3, 4]",
+    "[10, 1, -17, 0, 2, 13]",
+    "[4, -3, 3, -2, 2, -1, 1, 0]"])
 🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎🌎
 08. Garage
 
