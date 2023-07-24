@@ -1,0 +1,6 @@
+DOM - document object module
+
+What gives us the opportunity to work with the HTML. The browser creates the DOM(representnation of the HTML of a page). 
+<script> tag can be added in the html file. If our JS is in another file: 
+<script src="index.js"></script>
+It is better to diverse responsibilities.
