@@ -4,3 +4,40 @@ What gives us the opportunity to work with the HTML. The browser creates the DOM
 <script> tag can be added in the html file. If our JS is in another file: 
 <script src="index.js"></script>
 It is better to diverse responsibilities.
+
+DOM is inmemory representation of the HTML by making them JS objects. Methods - functions we can call on different elements. Properties are values of HTML elements that can be set and changed. 
+$0 written in the console gives us the element we seleted frorm the html. $0. gives us all properties we can use on this object.
+$0.style.background = 'red' - we write the property like so 
+$0.style.color = 'white'
+$0.style.color - simply returns the current value
+
+Every element has attributes in the HTML. They are properties in the DOM.
+value is a property especially for the input fields.
+
+element.innerHTML = "<p>Welcome to the DOM <\p>"; - gives us the entire HTML of the element we selected, deletes it and sets what we wrote
+
+API - the way we commmunicate with the database. It gives us only what we want. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
