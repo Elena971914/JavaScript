@@ -5,8 +5,11 @@ What gives us the opportunity to work with the HTML. The browser creates the DOM
 <script src="index.js"></script>
 It is better to diverse responsibilities.
 
-DOM is inmemory representation of the HTML by making them JS objects. Methods - functions we can call on different elements. Properties are values of HTML elements that can be set and changed. 
-$0 written in the console gives us the element we seleted frorm the html. $0. gives us all properties we can use on this object.
+DOM is inmemory representation of the HTML by making them JS objects. 
+Methods - functions we can call on different elements. 
+Properties are values of HTML elements that can be set and changed. 
+$0 written in the console gives us the element we seleted frorm the html. 
+$0. gives us all properties we can use on this object.
 $0.style.background = 'red' - we write the property like so 
 $0.style.color = 'white'
 $0.style.color - simply returns the current value
@@ -53,7 +56,8 @@ Depricated - parts of the language that are not used anymore and deleted. In JS 
 
 DOM can be iterated and we can use direct parents and children.
 
-We should use createElement to create new elements. We call it with the type of element we want to create - the tag. When we append it to the DOM tree they become visible.
+We should use createElement to create new elements. We call it with the type of element we want to create - the tag. 
+When we append it to the DOM tree they become visible.
 
 function addItem() {
 //get what is written in the field
