@@ -89,10 +89,34 @@ function deleteByEmail() {
     }
 }
 
+Event Listener
 
+element.addEventListener('click', clickMe) --- first comes the name of the event (one of the predefined), then comes the function (it will be called with the element)
 
+06. Add/Delete
+function addItem() {
+   
+   const value = document.querySelector('#newItemText').value;
+   const listItem = createListItem(value)
+   document.querySelector('ul').appendChild(item)
 
+   function createListItem(text) {
+    const item = document.createElement('li')
+       
+    item.textContent = text
+    item.appendChild(createDeleteButton())
 
+    return item
+   }
+       
+   function createDeleteButton() {
+    const deleteButton = document.createElement('a');
+   deleteButton.href = "#";
+   deleteButton.textContent = '[Delete}'
+   deleteButton.addEventListener('click', (e) => e.target.parentElement.remove())
+
+    return deleteButton}
+}
 
 
 
