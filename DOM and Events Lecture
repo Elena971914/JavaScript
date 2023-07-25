@@ -18,6 +18,59 @@ element.innerHTML = "<p>Welcome to the DOM <\p>"; - gives us the entire HTML of 
 
 API - the way we commmunicate with the database. It gives us only what we want. 
 
+When we are targeting element by class id and tag name we receive array. In the selectors we don't write #,.; only string.
+We can use querySelector() (array with the first match), querySelectorAll() is for selecting element like in css:
+document.querySelector('#sum')
+
+
+What we receive from the selectors can be iterated but doesn't have all the functions of array. In order to do so we should use:
+Array.from(document.querySelectorAll('input')) -->this we can map
+
+Nodelist and query collection:
+querySelector makes code consistent. It returns NodeList. getElementByTagname() returns query collection. 
+Query collection - always live. When we change smth in the browser it also chages.
+
+In the HTML :
+<div id = "test></d>
+const test = document.querySelector("#test");
+test.innerHTML += "<input />" -adds another input field
+test.innertext += "<input />" -adds only text
+
+inputs = document.querySelectorAll('input')
+the nodelist won't change in the upper situation
+
+.textContent - returns the content of the html element no matter if the visibility is hidden
+.innerText - returns only the visible elements
+
+API is everything we use to communicate to the browser
+.map is API by which we communicate to the array
+Everything that packages smth for the browser is API. 
+In the context of web communication API is a synonym of REST.
+
+REST API is a standard for communicating information by using networking calls
+
+Depricated - parts of the language that are not used anymore and deleted. In JS the not usable functionality is not beign depricated.
+
+DOM can be iterated and we can use direct parents and children.
+
+We should use createElement to create new elements. We call it with the type of element we want to create - the tag. When we append it to the DOM tree they become visible.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
