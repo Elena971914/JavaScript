@@ -55,8 +55,39 @@ DOM can be iterated and we can use direct parents and children.
 
 We should use createElement to create new elements. We call it with the type of element we want to create - the tag. When we append it to the DOM tree they become visible.
 
+function addItem() {
+//get what is written in the field
+    const value = document.querySelector('#newItemText').value;
+//access the place we want to add/use method to write/
+    // document.querySelector('ul').innerHTML += `<li>${value}</li>`
+    //create element in the memory
+    const item = document.createElement('li')
+    //changing the value of this element
+    item.textContent = value
+    //adding it to the html
+    document.querySelector('ul').appendChild(item);
+}
 
+-------------------------------------------
 
+function deleteByEmail() {
+    //we take the element that should be deleted
+    const email = document.querySelector('input[name="email"]').value
+    //get all even table boxes and convert them to array
+    const emailBoxes = Array.from(document.querySelectorAll("td:nth-child(even)"))
+
+    const userEmailBox = emailBoxes.find(box => box.textContent === email)
+
+    const result = document.querySelector('#result');
+    //delete the whole row
+    if (userEmailBox) {
+        userEmailBox.parentElement.remove()
+        result.textContent = 'Deleted.'
+    }
+    else {
+        result.textContent = 'Not found.'
+    }
+}
 
 
 
