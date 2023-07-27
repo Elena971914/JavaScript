@@ -59,6 +59,37 @@ DOM can be iterated and we can use direct parents and children.
 We should use createElement to create new elements. We call it with the type of element we want to create - the tag. 
 When we append it to the DOM tree they become visible.
 
+Event Listener
+
+element.addEventListener('click', clickMe) --- first comes the name of the event (one of the predefined), then comes the function (it will be called with the element)
+
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥 -   T A S K S   - 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+
+01. Sum Numbers
+    function calc() {
+    const number1 = document.getElementById('num1')
+    const number2 = document.getElementById('num2')
+    const sum = Number(number1.value) + Number(number2.value)
+    document.getElementById('sum').value = sum
+}
+
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+02. Show More
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+03. Collect List Items
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+04. List of Items
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+05. Delete from Table
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+06. Add / Delete
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+07. Colorize Table
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+08. Sum Table
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+09. Highlight Active
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 function addItem() {
 //get what is written in the field
     const value = document.querySelector('#newItemText').value;
@@ -93,10 +124,6 @@ function deleteByEmail() {
     }
 }
 
-Event Listener
-
-element.addEventListener('click', clickMe) --- first comes the name of the event (one of the predefined), then comes the function (it will be called with the element)
-
 06. Add/Delete
 function addItem() {
    
@@ -121,6 +148,7 @@ function addItem() {
 
     return deleteButton}
 }
+
 
 
 
