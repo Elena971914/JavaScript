@@ -75,12 +75,94 @@ element.addEventListener('click', clickMe) --- first comes the name of the event
 
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 02. Show More
+
+function showText() {
+    document.getElementById('more').style.display = 'none'
+    document.getElementById('text').style.display = 'inline'
+}
+
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 03. Collect List Items
+
+function extractText() {
+    const textItems = Array.from(document.querySelectorAll('li'))
+    const text = textItems.map((item) => item.textContent).join('\n')
+    document.querySelector('textarea').value = text
+}
+
+---------VAR 2
+
+function extractText() {
+let itemNodes = document.querySelectorAll("ul#items li");
+let textarea = document.querySelector("#result");
+for (let node of itemNodes) {
+textarea.value += node.textContent + "\n";
+}
+}
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 04. List of Items
+
+function addItem() {
+let text = document.getElementById('newItemText').value;
+let li = document.createElement("li");
+li.appendChild(document.createTextNode(text));
+document.getElementById("items").appendChild(li);
+//clearing the input:
+document.getElementById('newItemText').value = '';
+} 
+
+-------------VAR2
+
+function addItem() {
+//get what is written in the field
+    const value = document.querySelector('#newItemText').value;
+//access the place we want to add/use method to write/
+// document.querySelector('ul').innerHTML += `<li>${value}</li>`
+    //create element in the memory
+    const item = document.createElement('li')
+    //changing the value of this element
+    item.textContent = value
+    //adding it to the html
+    document.querySelector('ul').appendChild(item);
+}
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 05. Delete from Table
+
+function deleteByEmail() {
+let email = document.getElementsByName("email")[0].value;
+let secondColumn = document.querySelectorAll(
+"#customers tr td:nth-child(2)");
+for (let td of secondColumn)
+if (td.textContent == email) {
+let row = td.parentNode;
+row.parentNode.removeChild(row);
+document.getElementById('result').
+textContent = "Deleted.";
+return;
+}
+document.getElementById('result').textContent =
+"Not found.";
+}
+-------------------------VAR2
+
+function deleteByEmail() {
+    //we take the element that should be deleted
+    const email = document.querySelector('input[name="email"]').value
+    //get all even table boxes and convert them to array
+    const emailBoxes = Array.from(document.querySelectorAll("td:nth-child(even)"))
+
+    const userEmailBox = emailBoxes.find(box => box.textContent === email)
+
+    const result = document.querySelector('#result');
+    //delete the whole row
+    if (userEmailBox) {
+        userEmailBox.parentElement.remove()
+        result.textContent = 'Deleted.'
+    }
+    else {
+        result.textContent = 'Not found.'
+    }
+}
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 06. Add / Delete
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
