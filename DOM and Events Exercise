@@ -1,0 +1,28 @@
+01. Subtraction
+
+function subtract() {
+    const first = document.getElementById("firstNumber")
+    const second = document.getElementById("secondNumber")
+
+    first.disabled = false
+    second.disabled = false
+
+    const resultNumber = Number(first.value) - Number(second.value)
+
+    document.getElementById('result').textContent = resultNumber
+    
+}
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+02. Sections
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+03. Accordion
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+04. Locked Profile
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+05. Fill Dropdown
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+06. Table – Search Engine
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+07. Format the Text
+🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
+08. Furniture
