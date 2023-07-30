@@ -32,6 +32,19 @@ function create(words) {
 }
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 03. Accordion
+
+function toggle() {
+    const button = document.getElementsByClassName('button')[0]
+    button.addEventListener('click', showMore())
+
+    function showMore() {
+        const div = 
+        document.getElementById('extra')
+        div.style.display = 
+        div.style.display === 'none' ? 'block' : 'none'
+        button.textContent = button.textContent === "More"? 'Less' : "More"
+    }
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 04. Locked Profile
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
