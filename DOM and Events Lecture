@@ -165,48 +165,7 @@ function deleteByEmail() {
 }
 🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
 06. Add / Delete
-🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
-07. Colorize Table
-🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
-08. Sum Table
-🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
-09. Highlight Active
-🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
-function addItem() {
-//get what is written in the field
-    const value = document.querySelector('#newItemText').value;
-//access the place we want to add/use method to write/
-    // document.querySelector('ul').innerHTML += `<li>${value}</li>`
-    //create element in the memory
-    const item = document.createElement('li')
-    //changing the value of this element
-    item.textContent = value
-    //adding it to the html
-    document.querySelector('ul').appendChild(item);
-}
 
--------------------------------------------
-
-function deleteByEmail() {
-    //we take the element that should be deleted
-    const email = document.querySelector('input[name="email"]').value
-    //get all even table boxes and convert them to array
-    const emailBoxes = Array.from(document.querySelectorAll("td:nth-child(even)"))
-
-    const userEmailBox = emailBoxes.find(box => box.textContent === email)
-
-    const result = document.querySelector('#result');
-    //delete the whole row
-    if (userEmailBox) {
-        userEmailBox.parentElement.remove()
-        result.textContent = 'Deleted.'
-    }
-    else {
-        result.textContent = 'Not found.'
-    }
-}
-
-06. Add/Delete
 function addItem() {
    
    const value = document.querySelector('#newItemText').value;
@@ -231,35 +190,84 @@ function addItem() {
     return deleteButton}
 }
 
+------------------VAR 2
 
+function addItem() {
+   //get what is written in the field
+   const value = document.querySelector('#newItemText').value;
+   //access the place we want to add/use method to write/
+       // document.querySelector('ul').innerHTML += `<li>${value}</li>`
+       //create element in the memory
+       const item = document.createElement('li')
+       //changing the value of this element
+       item.textContent = value
 
+       const deleteButton = document.createElement('a');
+       deleteButton.href = "#";
+       deleteButton.textContent = '[Delete]'
 
+       item.appendChild(deleteButton)
 
+    //element that is created because of the event that happens
+    //the target refers to the exact button that is clicked, the parent selects the item that the button is in
+       deleteButton.addEventListener('click', (e) => e.target.parentElement.remove())
+       //adding it to the html
+       document.querySelector('ul').appendChild(item);
+}
 
+---------------VAR 3
 
+function solve() {
+let newElement = document.getElementById("newText").value;
+let list = document.getElementById("items");
+if (newElement.length === 0) return;
+let listItem = document.createElement("li");
+listItem.textContent = newElement;
+let remove = document.createElement("a");
+let linkText = document.createTextNode("[Delete]");
+remove.appendChild(linkText);
+remove.href = "#";
+remove.addEventListener("click", deleteItem);
+listItem.appendChild(remove);
+list.appendChild(listItem);
+function deleteItem() {
+listItem.remove();
+}
+}
 
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+07. Colorize Table
 
+function colorize() {
+    const rows = Array.from(document.querySelectorAll('tr:nth-child(even)'))
+    rows.forEach(row => {
+        row.style.background = 'teal'
+    })
+}
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+08. Sum Table
 
+function sumTable() {
+    const prices =Array.from(
+     document.querySelectorAll('td:nth-child(even)'))
+     const total = prices.reduce((acc, curr) => {return acc+Number(curr.textContent)},0)
 
+     document.querySelector('#sum').textContent = total
+}
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
+09. Highlight Active
 
+function focused() {
+    const inputs = Array.from(document.querySelectorAll('input'))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    inputs.forEach(input => {
+        input.addEventListener('focus', (e) => {
+            // document.querySelectorAll('focused').remove()
+            e.target.parentElement.className = 'focused'
+        })
+        input.addEventListener('blur', (e) => {
+            e.target.parentElement.className = ""
+        })
+    })
+}
+🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥
