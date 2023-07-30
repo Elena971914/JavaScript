@@ -47,6 +47,28 @@ function toggle() {
 }
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 04. Locked Profile
+
+function lockedProfile() {
+    const buttons = Array.from(document.querySelectorAll('.profile button'))
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', showMore)
+    })
+
+    function showMore(e) {
+        const lockedUnlocked = e.currentTarget.parentElement.querySelector('input[type="radio"]')
+
+        if (lockedUnlocked.checked) {
+            return
+        }
+
+        const hiddenInfo = e.target.parentElement.querySelector('div')
+
+        hiddenInfo.style.display = hiddenInfo.style.display === 'block'?'none':'block'
+
+        e.currentTarget.textContent = e.currentTarget.textContent === "Show more" ? 'Hide it' : 'Show more'
+    }
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 05. Fill Dropdown
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
