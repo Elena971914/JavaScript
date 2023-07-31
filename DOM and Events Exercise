@@ -12,6 +12,28 @@ function subtract() {
     document.getElementById('result').textContent = resultNumber
     
 }
+-------------------var2
+
+function subtract() {
+  const inputs = Array.from(document.querySelectorAll("input"));
+
+  function handler() {
+    const firstNumber = Number(document.querySelector("#firstNumber").value);
+    const secondNumber = Number(document.querySelector("#secondNumber").value);
+
+    console.log(firstNumber, secondNumber);
+
+    const sum = firstNumber - secondNumber;
+
+    const result = document.querySelector("#result");
+    result.textContent = sum;
+  }
+
+  inputs.forEach((input) => {
+    input.removeAttribute("disabled");
+    input.addEventListener("keyup", handler);
+  });
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 02. Sections
 
@@ -30,6 +52,33 @@ function create(words) {
       document.getElementById('content').appendChild(div)
    });
 }
+
+---------------------------var2
+
+function create(words) {
+  const container = document.querySelector("#content");
+
+  function onClick(e) {
+    const invisibleParagraph = e.currentTarget.querySelector("p");
+    invisibleParagraph.style.display = "block";
+  }
+
+  function createDiv(word) {
+    const div = document.createElement("div");
+    const p = document.createElement("p");
+    p.textContent = word;
+    p.style.display = "none";
+
+    div.appendChild(p);
+    div.addEventListener("click", onClick);
+
+    return div;
+  }
+
+  words.forEach((word) => {
+    container.appendChild(createDiv(word));
+  });
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 03. Accordion
 
@@ -44,6 +93,14 @@ function toggle() {
         div.style.display === 'none' ? 'block' : 'none'
         button.textContent = button.textContent === "More"? 'Less' : "More"
     }
+}
+---------------------------var2
+function toggle() {
+  const content = document.querySelector("#extra");
+  const button = document.querySelector("span.button");
+
+  content.style.display = content.style.display === "block" ? "none" : "block";
+  button.textContent = button.textContent === "More" ? "Less" : "More";
 }
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 04. Locked Profile
@@ -69,6 +126,30 @@ function lockedProfile() {
         e.currentTarget.textContent = e.currentTarget.textContent === "Show more" ? 'Hide it' : 'Show more'
     }
 }
+-------------------------VAR2
+function lockedProfile() {
+  const buttons = Array.from(document.querySelectorAll("button"));
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", handleClick);
+  });
+
+  function handleClick(e) {
+    const lockedRadioButton = e.currentTarget.parentElement.querySelector(
+      'input[type="radio"]'
+    );
+
+    if (lockedRadioButton.checked) {
+      return;
+    }
+
+    const isHidden = e.currentTarget.textContent === "Show more";
+    const hiddenInfo = e.currentTarget.parentElement.querySelector("div");
+
+    hiddenInfo.style.display = isHidden ? "block" : "none";
+    e.currentTarget.textContent = isHidden ? "Hide it" : "Show more";
+  }
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 05. Fill Dropdown
 
@@ -86,6 +167,30 @@ function addItem() {
     menu.appendChild(option)
     document.getElementById('newItemText').value = ""
     document.getElementById('newItemValue').value = ""
+}
+--------------------VAR2
+function addItem() {
+  const textInput = document.querySelector("#newItemText");
+  const valueInput = document.querySelector("#newItemValue");
+
+  const option = createOption(textInput.value, valueInput.value);
+
+  const select = document.querySelector("#menu");
+  select.appendChild(option);
+  clearInputFields();
+
+  function createOption(text, value) {
+    const option = document.createElement("option");
+    option.textContent = text;
+    option.value = value;
+
+    return option;
+  }
+
+  function clearInputFields() {
+    const inputs = Array.from(document.querySelectorAll("input"));
+    inputs.forEach((input) => (input.value = ""));
+  }
 }
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 06. Table – Search Engine
@@ -110,7 +215,151 @@ function solve() {
          document.querySelector("#searchField").value = ''
       }}
    }
+------------------------VAR2
+function solve() {
+  document.querySelector("#searchBtn").addEventListener("click", onClick);
+
+  function onClick() {
+    const searchQuery = document.querySelector("#searchField").value;
+    const cells = Array.from(document.querySelectorAll("tbody td"));
+    const activeRows = Array.from(document.querySelectorAll("tbody tr.select"));
+
+    activeRows.forEach((row) => {
+      row.classList.remove("select");
+    });
+
+    cells
+      .filter((cell) => cell.textContent.includes(searchQuery))
+      .forEach((cell) => {
+        cell.parentElement.classList.add("select");
+      });
+
+    //  cells.forEach((cell) => {
+    //    if (cell.textContent.includes(searchQuery)) {
+    //      cell.parentElement.classList.add("select");
+    //    }
+    //  });
+  }
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 07. Format the Text
+
+function solve() {
+  const input = document.querySelector("#input").value.split(".");
+  // clear empty last element
+  input.pop();
+  const container = document.querySelector("#output");
+
+  while (input.length > 0) {
+    const p = document.createElement("p");
+    p.textContent = input
+      .splice(0, 3)
+      .map((text) => text.trim())
+      .join(".");
+    container.appendChild(createParagraph());
+  }
+}
 🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦
 08. Furniture
+function solve() {
+  const formatButton = document.querySelector("#exercise button");
+  formatButton.addEventListener("click", parseFurnitureInput);
+
+  const buyButton = document.querySelector("#exercise button:nth-of-type(2)");
+  buyButton.addEventListener("click", buySelectedFurniture);
+
+  Array.from(document.querySelectorAll('input[type="checkbox"]')).forEach(
+    (checkbox) => checkbox.removeAttribute("disabled")
+  );
+}
+
+function buySelectedFurniture() {
+  const checkboxes = Array.from(
+    document.querySelectorAll('input[type="checkbox"]:checked')
+  );
+  // Hardest thing in the whole task
+  const cart = checkboxes.map(mapCheckboxToObject).reduce(
+    (acc, curr) => {
+      acc.names.push(curr.name);
+      acc.price += curr.price;
+      acc.averageDecorationFactor += curr.decFactor / checkboxes.length;
+
+      return acc;
+    },
+    {
+      names: [],
+      price: 0,
+      averageDecorationFactor: 0,
+    }
+  );
+
+  const cartTextArea = document.querySelector(
+    "#exercise textarea:nth-of-type(2)"
+  );
+  cartTextArea.value = `
+    Bought furniture: ${cart.names.join(", ")}
+    Total price: ${cart.price.toFixed(2)}
+    Avg Dec Factor: ${cart.averageDecorationFactor.toFixed(2)}
+  `;
+}
+
+function mapCheckboxToObject(checkbox) {
+  const row = checkbox.parentElement.parentElement;
+  const name = row.querySelector("td:nth-of-type(2)").innerText;
+  const price = Number(row.querySelector("td:nth-of-type(3)").innerText);
+  const decFactor = Number(row.querySelector("td:nth-of-type(4)").innerText);
+
+  return { name, price, decFactor };
+}
+
+function parseFurnitureInput() {
+  const input = JSON.parse(document.querySelector("#exercise textarea").value);
+  const tableBody = document.querySelector("tbody");
+  // TODO: naming
+  const cellCreator = createCellCreator();
+
+  input
+    .map(cellCreator.createFurnitureRow)
+    .forEach((row) => tableBody.appendChild(row));
+}
+
+function createCellCreator() {
+  function createImageCell(src) {
+    const imageCell = document.createElement("td");
+    const image = document.createElement("img");
+    image.src = src;
+    imageCell.appendChild(image);
+
+    return imageCell;
+  }
+
+  function createTextCell(text) {
+    const cell = document.createElement("td");
+    cell.textContent = text;
+
+    return cell;
+  }
+
+  function createCheckboxCell() {
+    const checkCell = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkCell.appendChild(checkbox);
+
+    return checkCell;
+  }
+
+  return {
+    createFurnitureRow(furniture) {
+      const row = document.createElement("tr");
+
+      row.appendChild(createImageCell(furniture.img));
+      row.appendChild(createTextCell(furniture.name));
+      row.appendChild(createTextCell(furniture.price));
+      row.appendChild(createTextCell(furniture.decFactor));
+      row.appendChild(createCheckboxCell());
+
+      return row;
+    },
+  };
+}
