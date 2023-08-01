@@ -47,5 +47,30 @@ issues[/number]
 GITHUB API DOCS - REPOSITOTIES - the url structure of the APIs
 
 
+fetch() - fetching data, if wse pass URL: makes request and returns code
+fetch returns promise -js object for asynchronous operations 
+(in the context of JS we have this kind of operations)
+on preview in the devtools we can get all needed data
 
+const repos = fetch(URL here)
 
+setTimeout(()=> console.log('here'), 1000) - 1000 how many ms after reading the passed function should be executed
+if number is 0 there is also delay, because when JS sees a function 
+that makes him behave asynchronous it execution priority goes down (the line awaits)
+
+function we pass are callback functions. not all functions that receive functions are asynchronous
+
+setInterval(()=>console.log("1sec"), 1000)
+
+Promises - object that has asynchronous operations (that will happen in the future)
+pending-running
+after that they become fulfilled or failed
+we can make a promise with keyword 'new'
+new Promise(executor)
+
+fetch("url").then(res => console.log(res.json() )).catch((err) => console.log(err))
+
+body:ReadableStream - then() function should be added again in the function chain
+
+const simulatedResponse = new Promise((resolve, reject) => {setTimeout(() => resolve(),500)})
+      simulatedResponse.then(() => console.log("Success").catch(() => console.log('Error'))}
