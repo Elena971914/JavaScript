@@ -92,6 +92,7 @@ function loadCommits() {
     }
 
     const list = document.querySelector('ul')
+    list.innerHTML = ""
 
     fetch(`https://api.github.com/repos/${username}/${repo}/commits`)
     .then((res)=> res.json())
@@ -103,3 +104,13 @@ function loadCommits() {
         })
     })
 }
+
+
+Async / Await
+
+Makes code look synchronic. await is the same as .then , but it is blocking word, not letting the code to continue being read.
+
+async function loadCommits() {} ... - async functions return promise
+where await functions are called they should be await-ed again.
+
+await returns not promise but the object that is in the promise
