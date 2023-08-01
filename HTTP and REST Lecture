@@ -17,7 +17,7 @@ HTTP defines methods to indicate the desired action to be performed:
       &&&&&&&&&&&&&&&&&&&&&&&&&&
 Request:
 
--- method, url(from where it is send), http protocol
+-- method, url, http protocol
 GET /users/testnakov/repos HTTP/1.1
 
 --headers - more info for the request we send, metainfo, some are mendatory, like
