@@ -1,6 +1,9 @@
 How to interract with database using API
 
-The browser is in permanent dialogue with the server. There is a series of rules the browser and server follow in order to understand each other. HTTP is the language they both speak, the rules they follow to communicate. The browser is called a client, the source of the request. There are strict formations of the requests and responds. 
+The browser is in permanent dialogue with the server. There is a series of rules 
+the browser and server follow in order to understand each other. 
+HTTP is the language they both speak, the rules they follow to communicate. The browser 
+is called a client, the source of the request. There are strict formations of the requests and responds. 
 
 What happens when we write google.com in the browser?
 - The domain is turned to IP address so it is accessible. READ
@@ -30,16 +33,28 @@ Response:
 Content-Type: what is being sent to the browser to display - test/html, application/json
 
 Responses return a result. Sometimes we make the server do something and it returns empty response (204). 
-Responses are with statys codes: 200 okay, 201-created, 204- no content, 301/302- moved/redirected, 400-bad request, 404- not found, 409-conflict, 422-problem with validation, 500/503 -server error
+Responses are with statys codes: 200 okay, 201-created, 204- no content, 301/302- moved/redirected, 
+400-bad request, 404- not found, 409-conflict, 422-problem with validation, 500/503 -server error
 
 Server - machine that gets request and returns responses
 
 REST
 
 REpresentational State Transfer - Architectural style for client-server communication.
-The client and server can communicate throuth HTTP, but if the fully potential of the HTTP is not used, the developer has more work to do. The REST helps the HTTP to work productive. It consists of RULES. Rest is important for server workers, who should make their APIs in respondence to the REST. API are the URLs that the server gives you in order to work with the data it consists of. Entity is a unit that is about the software we work with.. user is entity, product is entity. REST structure - post-> get -> get -> delete -> put/patch. REST implements the practice of using HTTP methods, practices, the structure of the urls that is based around the resources/entities. (the urls are more clear and structured). It is representational because by means of the URL and the methods we use we can take different representations of this resource. We are sending requests to the same URL and by means of the method (GET, POST, etc.) we are telling this API what we want to do.
+The client and server can communicate throuth HTTP, but if the fully potential of the HTTP is not used, 
+the developer has more work to do. The REST helps the HTTP to work productive. It consists of RULES. 
+Rest is important for server workers, who should make their APIs in respondence to the REST. API are 
+the URLs that the server gives you in order to work with the data it consists of. Entity is a unit 
+that is about the software we work with.. user is entity, product is entity. REST structure - 
+post-> get -> get -> delete -> put/patch. REST implements the practice of using HTTP methods, practices, 
+the structure of the urls that is based around the resources/entities. (the urls are more clear and structured). 
+It is representational because by means of the URL and the methods we use we can take different 
+representations of this resource. We are sending requests to the same URL and by means of the method 
+(GET, POST, etc.) we are telling this API what we want to do.
 
-REST APIs have 3 levels of maturity. Level 3 - it should be oriented around resources. name of the resource and id after: doctors/mjones; slots/1234. Level 2: use HTTP verbs- GET, POST, etc. Level 3: Hypermedia Controls- when we get a response it consists of connected related URL (comits_url) 
+REST APIs have 3 levels of maturity. Level 3 - it should be oriented around resources. name of the 
+resource and id after: doctors/mjones; slots/1234. Level 2: use HTTP verbs- GET, POST, etc. 
+Level 3: Hypermedia Controls- when we get a response it consists of connected related URL (comits_url) 
 
 issues_url - array of issues
 issues[/number] 
@@ -75,7 +90,8 @@ body:ReadableStream - then() function should be added again in the function chai
 const simulatedResponse = new Promise((resolve, reject) => {setTimeout(() => resolve(),500)})
       simulatedResponse.then(() => console.log("Success").catch(() => console.log('Error'))}
 
-When wrong url is passed to fetch() - 404 is successful request becacuse there is returned response and we should check explicitly if the url is valid
+When wrong url is passed to fetch() - 404 is successful request becacuse there is 
+returned response and we should check explicitly if the url is valid
 to append to the body the appended should be STRING
 
 JS is not multi thread - the code is executed on one thread only, guaranteeing memory safety
