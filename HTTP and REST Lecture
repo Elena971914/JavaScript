@@ -96,8 +96,23 @@ to append to the body the appended should be STRING
 
 JS is not multi thread - the code is executed on one thread only, guaranteeing memory safety
 Evedt loop is making possible the asynchronous operations.
+05. var 1
 
-05. 
+function loadRepos() {
+	const username = document.querySelector('#username').value
+	const repos = document.querySelector("#repos")
+	repos.innerHTML = ''
+
+	fetch(`https://api.github.com/users/${username}/repos`)
+		.then((result) => result.json(), (error) => { innerHTML += `${error.message}` }
+		)
+		.then((data) =>
+			data.forEach(repo => {
+				repos.innerHTML += `<li><a href=${repo.html_url}>${repo.full_name}</a></li>`
+			}))
+}
+
+05. var2 
 
 async function loadRepos() {
 	const username = document.querySelector('#username').value
