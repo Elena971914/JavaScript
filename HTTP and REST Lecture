@@ -167,5 +167,7 @@ async function loadCommits() {} ... - async functions return promise
 where await functions are called they should be await-ed again.
 
 await returns not promise but the object that is in the promise
+
 getbootstrap.com/docs/4.2/components 
 AJAX request is description of asynchronous HTML request through JS
+RESTful is API, following the REST convention
