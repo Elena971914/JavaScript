@@ -1,0 +1,45 @@
+01. The Pianist
+
+function solve(input) {
+    const collection = {}
+    let n = Number(input.shift())
+    const commands = input.slice(n)
+    input = input.slice(0, n)
+    for (let line of input) {
+        const [piece, composer, key] = line.split('|')
+        collection[piece] = { composer, key }
+    }
+
+    for (let text of commands) {
+        if (text === 'Stop') {
+            for (let piece in collection) {
+                console.log(`${piece} -> Composer: ${collection[piece].composer}, Key: ${collection[piece].key}`)
+            }
+        }
+        let [command, piece, ...info] = text.split('|')
+        if (command === 'Add') {
+            const [composer, key] = info
+            if (Object.keys(collection).includes(piece)) {
+                console.log(`${piece} is already in the collection!`)
+            } else {
+                collection[piece] = { composer, key }
+                console.log(`${piece} by ${composer} in ${key} added to the collection!`)
+            }
+        } else if (command === 'Remove') {
+            if (Object.keys(collection).includes(piece)) {
+                console.log(`Successfully removed ${piece}!`)
+                delete collection[piece]
+            } else {
+                console.log(`Invalid operation! ${piece} does not exist in the collection.`)
+            }
+        } else if (command === 'ChangeKey') {
+            if (Object.keys(collection).includes(piece)) {
+                const newKey = info
+                collection[piece].key = newKey
+                console.log(`Changed the key of ${piece} to ${newKey}!`)
+            } else {
+                console.log(`Invalid operation! ${piece} does not exist in the collection.`)
+            }
+        }
+    }
+}
